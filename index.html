@@ -100,108 +100,109 @@
         img.loaded {
             opacity: 1;
         }
+        /* Remove existing letter animation styles and add these */
         
-        #loader {
-            backdrop-filter: blur(8px);
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
         }
         
-        .letter {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: letterWave 1.2s ease-in-out infinite;
-        }
-        
-        @keyframes letterWave {
+        @keyframes pulse {
             0%,
             100% {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-20px) scale(1.2);
+                transform: scale(1);
                 opacity: 0.8;
             }
+            50% {
+                transform: scale(0.9);
+                opacity: 1;
+            }
         }
         
-        .letter:nth-child(1) {
-            animation-delay: 0.1s;
+        .loader-container {
+            perspective: 1000px;
         }
         
-        .letter:nth-child(2) {
-            animation-delay: 0.2s;
+        .animate-rotate {
+            animation: rotate 2.5s linear infinite;
         }
         
-        .letter:nth-child(3) {
-            animation-delay: 0.3s;
+        .particle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FFA500;
+            border-radius: 50%;
+            transform-origin: 50% 100px;
+            animation: pulse 1.5s ease-in-out infinite;
         }
         
-        .letter:nth-child(4) {
-            animation-delay: 0.4s;
+        .particle-1 {
+            transform: rotate(0deg) translateY(-80px);
         }
         
-        .letter:nth-child(5) {
-            animation-delay: 0.5s;
+        .particle-2 {
+            transform: rotate(45deg) translateY(-80px);
         }
         
-        .letter:nth-child(6) {
-            animation-delay: 0.6s;
+        .particle-3 {
+            transform: rotate(90deg) translateY(-80px);
         }
         
-        .letter:nth-child(8) {
-            animation-delay: 0.7s;
+        .particle-4 {
+            transform: rotate(135deg) translateY(-80px);
         }
         
-        .letter:nth-child(9) {
-            animation-delay: 0.8s;
+        .particle-5 {
+            transform: rotate(180deg) translateY(-80px);
         }
         
-        .letter:nth-child(10) {
-            animation-delay: 0.9s;
+        .particle-6 {
+            transform: rotate(225deg) translateY(-80px);
         }
         
-        .letter:nth-child(11) {
-            animation-delay: 1.0s;
+        .particle-7 {
+            transform: rotate(270deg) translateY(-80px);
         }
         
-        .letter:nth-child(12) {
-            animation-delay: 1.1s;
+        .particle-8 {
+            transform: rotate(315deg) translateY(-80px);
+        }
+        /* Add 3D effect to particles */
+        
+        .particle::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translateZ(-20px);
         }
         
-        .progress-bar {
-            transition: width 2s ease-in-out;
-        }
-        
-        body.loading {
-            overflow: hidden;
-            visibility: hidden;
-        }
-        
-        body.loading #loader {
-            visibility: visible;
+        .loader-percentage {
+            text-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
         }
     </style>
 </head>
 
 <body class="antialiased">
-    <div id="loader" class="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center transition-opacity duration-500">
-        <div class="text-orange text-4xl md:text-6xl font-bold tracking-wide loader-text">
-            <!-- Letters remain the same -->
-            <span class="letter">N</span>
-            <span class="letter">E</span>
-            <span class="letter">W</span>
-            <span class="letter">M</span>
-            <span class="letter">A</span>
-            <span class="letter">N</span>
-            <span class="space"></span>
-            <span class="letter">Y</span>
-            <span class="letter">A</span>
-            <span class="letter">N</span>
-            <span class="letter">G</span>
-            <span class="letter">E</span>
-        </div>
-        <div class="absolute bottom-20 w-48 h-1 bg-gray-800 rounded-full overflow-hidden">
-            <div class="progress-bar h-full bg-orange w-0"></div>
+    <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
+        <div class="loader-container relative w-48 h-48">
+            <div class="absolute inset-0 animate-rotate">
+                <div class="particle particle-1"></div>
+                <div class="particle particle-2"></div>
+                <div class="particle particle-3"></div>
+                <div class="particle particle-4"></div>
+                <div class="particle particle-5"></div>
+                <div class="particle particle-6"></div>
+                <div class="particle particle-7"></div>
+                <div class="particle particle-8"></div>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-orange text-2xl font-bold tracking-widest loader-percentage">0%</div>
+            </div>
         </div>
     </div>
     <!-- Navigation -->
@@ -684,36 +685,40 @@
             });
         });
 
-        // Add this at the very top of the existing script
+        // Replace the existing loader script with this
         document.body.classList.add('loading');
 
-        // Modify the existing loader script to
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            const progressBar = document.querySelector('.progress-bar');
+        let currentProgress = 0;
+        const loaderPercentage = document.querySelector('.loader-percentage');
+        const particles = document.querySelectorAll('.particle');
+        const loader = document.getElementById('loader');
 
-            progressBar.style.width = '100%';
+        function updateLoader() {
+            currentProgress = Math.min(currentProgress + Math.random() * 2, 100);
+            loaderPercentage.textContent = `${Math.floor(currentProgress)}%`;
 
-            setTimeout(() => {
+            // Animate particles
+            particles.forEach((particle, index) => {
+                const delay = index * 0.05;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.background = `hsl(${currentProgress * 3.6}, 100%, 50%)`;
+            });
+
+            if (currentProgress < 100) {
+                requestAnimationFrame(updateLoader);
+            } else {
                 loader.style.opacity = '0';
                 setTimeout(() => {
-                    document.body.classList.remove('loading');
                     loader.remove();
-                    document.body.style.overflow = 'visible';
-                    document.body.style.visibility = 'visible';
-                }, 500);
-            }, 2500);
-        });
+                    document.body.classList.remove('loading');
+                }, 1000);
+            }
+        }
 
-        // Prevent scrolling during loading
-        document.addEventListener('DOMContentLoaded', function() {
-            document.body.style.overflow = 'hidden';
-            document.body.style.pointerEvents = 'none';
-        });
-
-        window.addEventListener('load', function() {
-            document.body.style.overflow = 'auto';
-            document.body.style.pointerEvents = 'auto';
+        window.addEventListener('load', () => {
+            setTimeout(updateLoader, 500);
+            // Start subtle background animation
+            document.documentElement.style.setProperty('--rotate-speed', '30s');
         });
     </script>
 </body>
