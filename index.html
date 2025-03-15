@@ -3,18 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Newman Yange - Musician, Rapper, FX Trader, and Founder of NYNTH World">
+    <title>Newman Yange - Nigerian Rapper, FX Trader & Founder of NYNTH World</title>
+    <meta name="description" content="Official site of Newman Yange - Nigerian musician, rapper, FX trader, and founder of NYNTH World. Explore music, fashion, and entrepreneurial ventures.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newman Yange | NYNTH World</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://newman-yange.vercel.app">
+    <meta property="og:title" content="Newman Yange - Nigerian Rapper & Entrepreneur">
+    <meta property="og:description" content="Official site of Newman Yange - Musician, FX trader, and founder of NYNTH World. Explore music, fashion collections, and business ventures.">
+    <meta property="og:image" content="https://newmanyange.vercel.app/og-image.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NewmanYange">
+    <meta name="twitter:title" content="Newman Yange - Official Website">
+    <meta name="twitter:description" content="Nigerian rapper, musician, and founder of NYNTH World. Explore music, fashion, and entrepreneurial journey.">
+    <meta name="twitter:image" content="https://newmanyange.vercel.app/twitter-card.webp">
+    <link rel="canonical" href="https://newmanyange.vercel.app">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="icon" href="nynth-logo.ico">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000000;
-            color: #FFFFFF;
+            font-family: Montserrat, sans-serif;
+            background: #000;
+            color: #fff
         }
         
         h1,
@@ -23,88 +42,76 @@
         h4,
         h5,
         h6 {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: -0.03em;
+            font-family: Playfair Display, serif;
+            letter-spacing: -.03em
         }
         
         .hover-lift {
-            transition: transform 0.3s ease;
+            transition: transform .3s ease
         }
         
         .hover-lift:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px)
         }
         
         .card-bg {
-            background-color: #111111;
-            border: 1px solid #333333;
+            background: #111;
+            border: 1px solid #333
         }
         
         .nav-transparent {
-            background-color: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, .3);
+            backdrop-filter: blur(4px)
         }
         
         .text-orange {
-            color: #FFA500;
+            color: #FFA500
         }
         
         .border-orange {
-            border-color: #FFA500;
+            border-color: #FFA500
         }
         
         .navbar-menu {
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity .3s ease, transform .3s ease
         }
         
         .nav-mobile-link {
             color: #D1D5DB;
-            /* text-gray-300 */
             text-transform: uppercase;
-            /* uppercase */
-            font-size: 0.875rem;
-            /* text-sm */
+            font-size: .875rem;
             font-weight: 500;
-            /* font-medium */
-            letter-spacing: 0.05em;
-            /* tracking-wide */
-            padding: 0.5rem 1rem;
-            /* py-2 px-4 */
-            transition: color 0.3s ease;
-            /* transition-colors */
+            letter-spacing: .05em;
+            padding: .5rem 1rem;
+            transition: color .3s ease
         }
         
         .nav-mobile-link:hover {
-            color: #FFA500;
-            /* hover:text-orange */
+            color: #FFA500
         }
-        /* Smooth menu animation */
         
         #mobile-menu {
-            transition: all 0.3s ease-in-out;
+            transition: all .3s ease-in-out;
             max-height: 0;
-            overflow: hidden;
+            overflow: hidden
         }
         
         #mobile-menu:not(.hidden) {
-            max-height: 500px;
-            /* Adjust based on content height */
+            max-height: 500px
         }
-        /* Fade-in animation for images */
         
         img {
             opacity: 0;
-            transition: opacity 0.5s ease-in;
+            transition: opacity .5s ease-in
         }
         
         img.loaded {
-            opacity: 1;
+            opacity: 1
         }
-        /* Remove existing letter animation styles and add these */
         
         @keyframes rotate {
             100% {
-                transform: rotate(360deg);
+                transform: rotate(360deg)
             }
         }
         
@@ -112,20 +119,20 @@
             0%,
             100% {
                 transform: scale(1);
-                opacity: 0.8;
+                opacity: .8
             }
             50% {
-                transform: scale(0.9);
-                opacity: 1;
+                transform: scale(.9);
+                opacity: 1
             }
         }
         
         .loader-container {
-            perspective: 1000px;
+            perspective: 1000px
         }
         
         .animate-rotate {
-            animation: rotate 2.5s linear infinite;
+            animation: rotate 2.5s linear infinite
         }
         
         .particle {
@@ -135,59 +142,77 @@
             background: #FFA500;
             border-radius: 50%;
             transform-origin: 50% 100px;
-            animation: pulse 1.5s ease-in-out infinite;
+            animation: pulse 1.5s ease-in-out infinite
         }
         
         .particle-1 {
-            transform: rotate(0deg) translateY(-80px);
+            transform: rotate(0deg) translateY(-80px)
         }
         
         .particle-2 {
-            transform: rotate(45deg) translateY(-80px);
+            transform: rotate(45deg) translateY(-80px)
         }
         
         .particle-3 {
-            transform: rotate(90deg) translateY(-80px);
+            transform: rotate(90deg) translateY(-80px)
         }
         
         .particle-4 {
-            transform: rotate(135deg) translateY(-80px);
+            transform: rotate(135deg) translateY(-80px)
         }
         
         .particle-5 {
-            transform: rotate(180deg) translateY(-80px);
+            transform: rotate(180deg) translateY(-80px)
         }
         
         .particle-6 {
-            transform: rotate(225deg) translateY(-80px);
+            transform: rotate(225deg) translateY(-80px)
         }
         
         .particle-7 {
-            transform: rotate(270deg) translateY(-80px);
+            transform: rotate(270deg) translateY(-80px)
         }
         
         .particle-8 {
-            transform: rotate(315deg) translateY(-80px);
+            transform: rotate(315deg) translateY(-80px)
         }
-        /* Add 3D effect to particles */
         
         .particle::after {
             content: '';
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, .2);
             border-radius: 50%;
-            transform: translateZ(-20px);
+            transform: translateZ(-20px)
         }
         
         .loader-percentage {
-            text-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+            text-shadow: 0 0 15px rgba(255, 165, 0, .5)
         }
     </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Newman Yange",
+            "jobTitle": "Musician, Rapper, Entrepreneur",
+            "url": "https://newmanyange.vercel.app",
+            "sameAs": ["https://twitter.com/NewmanYange", "https://www.instagram.com/newmanyange/", "https://www.linkedin.com/in/newman-yange-26b227338", "https://open.spotify.com/artist/1Iobfd6X8lrTB0jtO7Z8Ad"],
+            "description": "Nigerian rapper, musician, FX trader, and founder of NYNTH World clothing brand.",
+            "birthDate": "2007-07-15",
+            "birthPlace": {
+                "@type": "Place",
+                "name": "Lagos, Nigeria"
+            },
+            "alumniOf": "Spyder Assembly",
+            "knowsAbout": ["Music production", "Forex trading", "Fashion design", "Entrepreneurship"]
+        }
+    </script>
 </head>
 
 <body class="antialiased">
+    <!-- Loader Section -->
     <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
         <div class="loader-container relative w-48 h-48">
             <div class="absolute inset-0 animate-rotate">
@@ -205,22 +230,19 @@
             </div>
         </div>
     </div>
+
     <!-- Navigation -->
     <nav class="fixed w-full z-50 backdrop-blur-md nav-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Hamburger Menu (Mobile) -->
                 <div class="flex items-center md:hidden">
                     <button id="menu-toggle" class="text-orange focus:outline-none">
-                    <i class="fas fa-bars text-2xl" id="menu-icon"></i>
-                </button>
+                        <i class="fas fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
                 </div>
-                <!-- Logo -->
                 <div class="flex items-center">
                     <a href="index.html" class="text-xl md:text-2xl font-bold tracking-tight text-orange">NEWMAN YANGE</a>
                 </div>
-
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">Home</a>
                     <a href="#about" class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">About</a>
@@ -230,7 +252,6 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="flex flex-col space-y-4 mt-4">
                 <a href="#home" class="nav-mobile-link">Home</a>
@@ -240,18 +261,15 @@
                 <a href="#contact" class="nav-mobile-link">Contact</a>
             </div>
         </div>
-        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden" id="home" style="background-image: url('jb.jpeg');">
         <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
         <div class="text-center relative z-10">
-            <h1 class="text-7xl md:text-9xl font-bold text-whitemb-4">NEWMAN YANGE</h1>
+            <h1 class="text-7xl md:text-9xl font-bold text-white mb-4">NEWMAN YANGE</h1>
             <p class="text-xl mb-8 text-white">Musician • Rapper • FX Trader • Founder of NYNTH World</p>
-            <a href="#music" class="mt-8 border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">
-                Explore My Music →
-            </a>
+            <a href="#music" class="mt-8 border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">Explore My Music →</a>
         </div>
     </section>
 
@@ -294,12 +312,13 @@
                 </div>
                 <div class="relative">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-                        <img src="newmn.jpeg" class="w-full h-full object-cover">
+                        <img src="newmn.jpeg" class="w-full h-full object-cover" alt="Newman Yange">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- NYNTH World Section -->
     <section class="py-24 card-bg" id="nynth">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -308,13 +327,10 @@
                 NYNTH World is more than a clothing brand—it's a movement. Combining urban aesthetics with premium craftsmanship, it represents Newman's vision of style and substance. At its core, NYNTH World is about inclusivity, creativity, and community.
             </p>
 
-            <!-- Pop-Up Event Content -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
-                <!-- Image Section -->
                 <div class="rounded-xl overflow-hidden hover-lift">
                     <img src="chair (12).jpeg" class="w-full h-96 object-cover" alt="NYNTH World Pop-Up Event">
                 </div>
-                <!-- Text Section -->
                 <div class="text-center md:text-left">
                     <h3 class="text-3xl font-bold mb-6">Our First Pop-Up Event</h3>
                     <p class="text-xl text-gray-300">
@@ -324,7 +340,6 @@
                 </div>
             </div>
 
-            <!-- Inclusivity and Movement -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
                 <div class="order-2 md:order-1 text-center md:text-left">
                     <h3 class="text-3xl font-bold mb-6">A Brand for Everyone</h3>
@@ -337,12 +352,8 @@
                     <img src="chair (8).jpeg" class="w-full h-96 object-cover" alt="NYNTH World Inclusivity">
                 </div>
             </div>
-
-
         </div>
     </section>
-
-
 
     <!-- Jeffrey Benson Section -->
     <section class="py-24" id="jeffrey">
@@ -356,33 +367,31 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="rounded-xl overflow-hidden hover-lift">
-                        <img src="hq720_2.png" class="w-full h-full object-cover">
+                        <img src="hq720_2.png" class="w-full h-full object-cover" alt="Jeffrey Benson">
                     </div>
                     <div class="rounded-xl overflow-hidden hover-lift">
-                        <img src="ded.png" class="w-full h-full object-cover">
+                        <img src="ded.png" class="w-full h-full object-cover" alt="Meeting">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Member of Spyder Assembly Section -->
+    <!-- Spyder Assembly Section -->
     <section class="py-24" id="spyder-assembly">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                <!-- Image Grid -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="rounded-xl overflow-hidden hover-lift">
-                        <img src="spyder-meet-3.jpeg" class="w-full h-full object-cover" alt="Newman Yange and Michael Spyder">
+                        <img src="spyder-meet-3.jpeg" class="w-full h-full object-cover" alt="Michael Spyder">
                     </div>
                     <div class="rounded-xl overflow-hidden hover-lift">
-                        <img src="chair (7).jpeg" class="w-full h-full object-cover" alt="Newman Yange and Michael Spyder">
+                        <img src="chair (7).jpeg" class="w-full h-full object-cover" alt="Meeting">
                     </div>
                     <div class="col-span-2 rounded-xl overflow-hidden hover-lift">
-                        <img src="spyder-meet-1.jpeg" class="w-full h-full object-cover" alt="Newman Yange and Michael Spyder">
+                        <img src="spyder-meet-1.jpeg" class="w-full h-full object-cover" alt="Discussion">
                     </div>
                 </div>
-                <!-- Text Content -->
                 <div class="space-y-8">
                     <h2 class="text-5xl font-bold">Member of Spyder Assembly</h2>
                     <p class="text-xl text-gray-300 leading-relaxed">
@@ -432,80 +441,16 @@
 
                 <!-- Carousel Buttons -->
                 <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-orange p-3 rounded-full hover:bg-black/70 transition-colors">
-                <i class="fas fa-chevron-left text-2xl"></i>
-            </button>
+                    <i class="fas fa-chevron-left text-2xl"></i>
+                </button>
                 <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-orange p-3 rounded-full hover:bg-black/70 transition-colors">
-                <i class="fas fa-chevron-right text-2xl"></i>
-            </button>
+                    <i class="fas fa-chevron-right text-2xl"></i>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- JavaScript for Carousel Functionality -->
-    <script>
-        const carousel = document.getElementById('carousel');
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-        let currentIndex = 0;
-        let autoSlideInterval;
-
-        // Function to update carousel position
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        // Function to move to the next slide
-        function nextSlide() {
-            if (currentIndex < carousel.children.length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0; // Loop to first slide
-            }
-            updateCarousel();
-        }
-
-        // Function to move to the previous slide
-        function prevSlide() {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = carousel.children.length - 1; // Loop to last slide
-            }
-            updateCarousel();
-        }
-
-        // Start auto-slide
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
-        }
-
-        // Stop auto-slide
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-
-        // Event listeners for buttons
-        prevButton.addEventListener('click', () => {
-            prevSlide();
-            stopAutoSlide(); // Stop auto-slide when user interacts
-            startAutoSlide(); // Restart auto-slide after interaction
-        });
-
-        nextButton.addEventListener('click', () => {
-            nextSlide();
-            stopAutoSlide(); // Stop auto-slide when user interacts
-            startAutoSlide(); // Restart auto-slide after interaction
-        });
-
-        // Start auto-slide on page load
-        startAutoSlide();
-
-        // Pause auto-slide when user hovers over the carousel
-        carousel.addEventListener('mouseenter', stopAutoSlide);
-        carousel.addEventListener('mouseleave', startAutoSlide);
-    </script>
-
-    <!-- Music section -->
+    <!-- Music Section -->
     <section class="py-24 card-bg" id="music">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-16 text-orange">Music</h2>
@@ -546,16 +491,16 @@
                     <div class="flex space-x-4">
                         <!-- Disabled Spotify -->
                         <span class="text-gray-500 cursor-not-allowed">
-                        <i class="fab fa-spotify text-2xl"></i>
-                    </span>
+                            <i class="fab fa-spotify text-2xl"></i>
+                        </span>
                         <!-- Disabled iTunes -->
                         <span class="text-gray-500 cursor-not-allowed">
-                        <i class="fab fa-itunes-note text-2xl"></i>
-                    </span>
+                            <i class="fab fa-itunes-note text-2xl"></i>
+                        </span>
                         <!-- Disabled Audiomack -->
                         <span class="text-gray-500 cursor-not-allowed">
-                        <i class="fas fa-headphones text-2xl"></i>
-                    </span>
+                            <i class="fas fa-headphones text-2xl"></i>
+                        </span>
                     </div>
                 </div>
 
@@ -569,16 +514,16 @@
                     <div class="flex space-x-4">
                         <!-- Disabled Spotify -->
                         <span class="text-gray-500 cursor-not-allowed">
-                        <i class="fab fa-spotify text-2xl"></i>
-                    </span>
+                            <i class="fab fa-spotify text-2xl"></i>
+                        </span>
                         <!-- Disabled iTunes -->
                         <span class="text-gray-500 cursor-not-allowed">
-                        <i class="fab fa-itunes-note text-2xl"></i>
-                    </span>
+                            <i class="fab fa-itunes-note text-2xl"></i>
+                        </span>
                         <!-- Disabled Audiomack -->
                         <span class="text-gray-500 cursor-not-allowed">
-                        <i class="fas fa-headphones text-2xl"></i>
-                    </span>
+                            <i class="fas fa-headphones text-2xl"></i>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -637,89 +582,77 @@
         </div>
     </footer>
 
-    <script>
-        // Hamburger Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+    <script defer>
+        const menuToggle = document.getElementById('menu-toggle'),
+            mobileMenu = document.getElementById('mobile-menu'),
+            menuIcon = document.getElementById('menu-icon');
 
-        // Toggle menu and icon
         function toggleMenu() {
-            mobileMenu.classList.toggle('hidden');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
+            mobileMenu.classList.toggle('hidden'), menuIcon.classList.toggle('fa-bars'), menuIcon.classList.toggle('fa-times')
+        }
+        menuToggle.addEventListener('click', toggleMenu), document.querySelectorAll('.nav-mobile-link').forEach((e => {
+            e.addEventListener('click', (() => {
+                mobileMenu.classList.add('hidden'), menuIcon.classList.remove('fa-times'), menuIcon.classList.add('fa-bars')
+            }))
+        })), document.addEventListener('click', (e => {
+            !e.target.closest('#mobile-menu') && !e.target.closest('#menu-toggle') && !mobileMenu.classList.contains('hidden') && toggleMenu()
+        }));
+
+        const carousel = document.getElementById('carousel'),
+            prev = document.getElementById('prev'),
+            next = document.getElementById('next');
+        let currentIndex = 0,
+            autoSlideInterval;
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex*100}%)`
         }
 
-        menuToggle.addEventListener('click', toggleMenu);
+        function nextSlide() {
+            currentIndex < carousel.children.length - 1 ? currentIndex++ : currentIndex = 0, updateCarousel()
+        }
 
-        // Close menu when clicking nav links
-        document.querySelectorAll('.nav-mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            });
-        });
+        function prevSlide() {
+            currentIndex > 0 ? currentIndex-- : currentIndex = carousel.children.length - 1, updateCarousel()
+        }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!event.target.closest('#mobile-menu') &&
-                !event.target.closest('#menu-toggle') &&
-                !mobileMenu.classList.contains('hidden')) {
-                toggleMenu();
-            }
-        });
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 3e3)
+        }
 
-        // ... (existing carousel and menu JavaScript remains unchanged) ...
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval)
+        }
+        prev.addEventListener('click', (() => {
+            prevSlide(), stopAutoSlide(), startAutoSlide()
+        })), next.addEventListener('click', (() => {
+            nextSlide(), stopAutoSlide(), startAutoSlide()
+        })), startAutoSlide(), carousel.addEventListener('mouseenter', stopAutoSlide), carousel.addEventListener('mouseleave', startAutoSlide);
 
-        // Fade-in images on load
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('img').forEach(img => {
-                img.addEventListener('load', function() {
-                    this.classList.add('loaded');
-                });
-                // Check if image is already loaded (cached)
-                if (img.complete) {
-                    img.classList.add('loaded');
-                }
-            });
-        });
-
-        // Replace the existing loader script with this
-        document.body.classList.add('loading');
+        document.addEventListener('DOMContentLoaded', (function() {
+            document.querySelectorAll('img').forEach((e => {
+                e.addEventListener('load', (function() {
+                    this.classList.add('loaded')
+                })), e.complete && e.classList.add('loaded')
+            }))
+        }));
 
         let currentProgress = 0;
-        const loaderPercentage = document.querySelector('.loader-percentage');
-        const particles = document.querySelectorAll('.particle');
-        const loader = document.getElementById('loader');
+        const loaderPercentage = document.querySelector('.loader-percentage'),
+            particles = document.querySelectorAll('.particle'),
+            loader = document.getElementById('loader');
 
         function updateLoader() {
-            currentProgress = Math.min(currentProgress + Math.random() * 2, 100);
-            loaderPercentage.textContent = `${Math.floor(currentProgress)}%`;
-
-            // Animate particles
-            particles.forEach((particle, index) => {
-                const delay = index * 0.05;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.background = `hsl(${currentProgress * 3.6}, 100%, 50%)`;
-            });
-
-            if (currentProgress < 100) {
-                requestAnimationFrame(updateLoader);
-            } else {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.remove();
-                    document.body.classList.remove('loading');
-                }, 1000);
-            }
+            currentProgress = Math.min(currentProgress + 2 * Math.random(), 100), loaderPercentage.textContent = `${Math.floor(currentProgress)}%`, particles.forEach(((e, t) => {
+                e.style.animationDelay = `${.05*t}s`, e.style.background = `hsl(${3.6*currentProgress},100%,50%)`
+            })), currentProgress < 100 ? requestAnimationFrame(updateLoader) : (loader.style.opacity = '0', setTimeout((() => {
+                loader.remove(), document.body.classList.remove('loading')
+            }), 1e3))
         }
-
-        window.addEventListener('load', () => {
-            setTimeout(updateLoader, 500);
-            // Start subtle background animation
-            document.documentElement.style.setProperty('--rotate-speed', '30s');
-        });
+        window.addEventListener('load', (() => {
+            setTimeout(updateLoader, 500), document.documentElement.style.setProperty('--rotate-speed', '30s')
+        }));
     </script>
 </body>
 
