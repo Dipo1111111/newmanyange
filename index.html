@@ -190,6 +190,12 @@
         .loader-percentage {
             text-shadow: 0 0 15px rgba(255, 165, 0, .5)
         }
+        /* New styles for vertical line */
+        
+        .vertical-line {
+            border-left: 2px solid #FFA500;
+            height: 100%;
+        }
     </style>
     <script type="application/ld+json">
         {
@@ -341,6 +347,10 @@
                     <div class="rounded-xl overflow-hidden hover-lift">
                         <img src="small newmans.jpeg" class="w-full h-64 object-cover" loading="lazy" alt="Newman's family">
                     </div>
+                    <!-- Wider Image Placeholder -->
+                    <div class="col-span-2 rounded-xl overflow-hidden hover-lift">
+                        <img src="WhatsApp Image 2025-03-18 at 11.37.58 PM.jpeg" class="w-full h-64 object-cover" loading="lazy" alt="Wider image placeholder">
+                    </div>
                 </div>
             </div>
         </div>
@@ -357,6 +367,11 @@
                 NYNTH World is more than a clothing brand—it's a movement. Combining urban aesthetics with premium craftsmanship, it represents Newman's vision of style and substance. At its core, NYNTH World is about inclusivity, creativity, and community.
             </p>
 
+            <!-- Shop Now Section -->
+            <div class="text-center mt-12">
+                <a href="" class="border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">Shop Now →</a>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
                 <div class="rounded-xl overflow-hidden hover-lift">
                     <img src="chair (12).jpeg" class="w-full h-96 object-cover" alt="NYNTH World Pop-Up Event">
@@ -368,6 +383,7 @@
                         The event was a testament to our mission: to inspire, connect, and uplift through art and fashion. It also led to a complete sell-out of our <strong>Truqha 9 Collection</strong>, marking a significant step
                         toward our bigger vision.
                     </p>
+
                 </div>
             </div>
 
@@ -408,10 +424,44 @@
         </div>
     </section>
 
+    <!-- Horizontal Divider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="border-t border-gray-700 my-12"></div>
+    </div>
+
     <!-- Spyder Assembly Section -->
     <section class="py-24" id="spyder-assembly">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
+            <!-- Mobile Layout: Text First, Images Below -->
+            <div class="md:hidden">
+                <div class="space-y-8">
+                    <h2 class="text-5xl font-bold">Member of Spyder Academy</h2>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        In 2023, Newman Yange crossed paths with Michael Spyder, a visionary trader and philanthropist. What began as a meeting of minds has since evolved into a transformative mentorship. Michael’s strategic brilliance and dedication to giving back have deeply
+                        influenced Newman’s journey.
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        As a mentor, Michael has not only shared invaluable insights into trading and entrepreneurship but also inspired Newman to weave philanthropy into his work. Their connection is a testament to the power of shared values and the impact of meaningful relationships.
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Through this partnership, Newman continues to grow, driven by Michael’s unwavering support and the belief that true success lies in uplifting others.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <div class="rounded-xl overflow-hidden hover-lift">
+                        <img src="spyder-meet-3.jpeg" class="w-full h-full object-cover" alt="Michael Spyder">
+                    </div>
+                    <div class="rounded-xl overflow-hidden hover-lift">
+                        <img src="chair (7).jpeg" class="w-full h-full object-cover" alt="Meeting">
+                    </div>
+                    <div class="col-span-2 rounded-xl overflow-hidden hover-lift">
+                        <img src="spyder-meet-1.jpeg" class="w-full h-full object-cover" alt="Discussion">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Layout: Images and Text Side by Side -->
+            <div class="hidden md:grid md:grid-cols-2 gap-16 items-center">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="rounded-xl overflow-hidden hover-lift">
                         <img src="spyder-meet-3.jpeg" class="w-full h-full object-cover" alt="Michael Spyder">
@@ -441,7 +491,8 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="py-24 bg-black" id="gallery">
+    <section class="py-16 bg-black" id="gallery">
+        <!-- Reduced space here -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-16 text-orange">NYNTH World Gallery</h2>
             <p class="text-sm text-gray-300 text-center mb-12 max-w-2xl mx-auto">
