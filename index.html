@@ -4,38 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Newman Yange - Nigerian Rapper, FX Trader & Founder of NYNTH World</title>
-    <meta name="description" content="Official site of Newman Yange - Nigerian musician, rapper, FX trader, and founder of NYNTH World. Explore music, fashion, and entrepreneurial ventures.">
+    <meta name="description"
+        content="Official site of Newman Yange - Nigerian musician, rapper, FX trader, and founder of NYNTH World. Explore music, fashion, and entrepreneurial ventures.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://newman-yange.vercel.app">
     <meta property="og:title" content="Newman Yange - Nigerian Rapper & Entrepreneur">
-    <meta property="og:description" content="Official site of Newman Yange - Musician, FX trader, and founder of NYNTH World. Explore music, fashion collections, and business ventures.">
+    <meta property="og:description"
+        content="Official site of Newman Yange - Musician, FX trader, and founder of NYNTH World. Explore music, fashion collections, and business ventures.">
     <meta property="og:image" content="https://newmanyange.vercel.app/og-image.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@NewmanYange">
     <meta name="twitter:title" content="Newman Yange - Official Website">
-    <meta name="twitter:description" content="Nigerian rapper, musician, and founder of NYNTH World. Explore music, fashion, and entrepreneurial journey.">
+    <meta name="twitter:description"
+        content="Nigerian rapper, musician, and founder of NYNTH World. Explore music, fashion, and entrepreneurial journey.">
     <meta name="twitter:image" content="https://newmanyange.vercel.app/twitter-card.webp">
     <link rel="canonical" href="https://newmanyange.vercel.app">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap"
+        as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        as="style">
     <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="icon" href="nynth-logo.ico">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        crossorigin="anonymous"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
     <style>
         body {
             font-family: Montserrat, sans-serif;
             background: #000;
             color: #fff
         }
-        
+
         h1,
         h2,
         h3,
@@ -45,37 +54,37 @@
             font-family: Playfair Display, serif;
             letter-spacing: -.03em
         }
-        
+
         .hover-lift {
             transition: transform .3s ease
         }
-        
+
         .hover-lift:hover {
             transform: translateY(-5px)
         }
-        
+
         .card-bg {
             background: #111;
             border: 1px solid #333
         }
-        
+
         .nav-transparent {
             background: rgba(0, 0, 0, .3);
             backdrop-filter: blur(4px)
         }
-        
+
         .text-orange {
             color: #FFA500
         }
-        
+
         .border-orange {
             border-color: #FFA500
         }
-        
+
         .navbar-menu {
             transition: opacity .3s ease, transform .3s ease
         }
-        
+
         .nav-mobile-link {
             color: #D1D5DB;
             text-transform: uppercase;
@@ -85,56 +94,58 @@
             padding: .5rem 1rem;
             transition: color .3s ease
         }
-        
+
         .nav-mobile-link:hover {
             color: #FFA500
         }
-        
+
         #mobile-menu {
             transition: all .3s ease-in-out;
             max-height: 0;
             overflow: hidden
         }
-        
+
         #mobile-menu:not(.hidden) {
             max-height: 500px
         }
-        
+
         img {
             opacity: 0;
             transition: opacity .5s ease-in
         }
-        
+
         img.loaded {
             opacity: 1
         }
-        
+
         @keyframes rotate {
             100% {
                 transform: rotate(360deg)
             }
         }
-        
+
         @keyframes pulse {
+
             0%,
             100% {
                 transform: scale(1);
                 opacity: .8
             }
+
             50% {
                 transform: scale(.9);
                 opacity: 1
             }
         }
-        
+
         .loader-container {
             perspective: 1000px
         }
-        
+
         .animate-rotate {
             animation: rotate 2.5s linear infinite
         }
-        
+
         .particle {
             position: absolute;
             width: 12px;
@@ -144,39 +155,39 @@
             transform-origin: 50% 100px;
             animation: pulse 1.5s ease-in-out infinite
         }
-        
+
         .particle-1 {
             transform: rotate(0deg) translateY(-80px)
         }
-        
+
         .particle-2 {
             transform: rotate(45deg) translateY(-80px)
         }
-        
+
         .particle-3 {
             transform: rotate(90deg) translateY(-80px)
         }
-        
+
         .particle-4 {
             transform: rotate(135deg) translateY(-80px)
         }
-        
+
         .particle-5 {
             transform: rotate(180deg) translateY(-80px)
         }
-        
+
         .particle-6 {
             transform: rotate(225deg) translateY(-80px)
         }
-        
+
         .particle-7 {
             transform: rotate(270deg) translateY(-80px)
         }
-        
+
         .particle-8 {
             transform: rotate(315deg) translateY(-80px)
         }
-        
+
         .particle::after {
             content: '';
             position: absolute;
@@ -186,12 +197,13 @@
             border-radius: 50%;
             transform: translateZ(-20px)
         }
-        
+
         .loader-percentage {
             text-shadow: 0 0 15px rgba(255, 165, 0, .5)
         }
+
         /* New styles for vertical line */
-        
+
         .vertical-line {
             border-left: 2px solid #FFA500;
             height: 100%;
@@ -247,14 +259,21 @@
                     </button>
                 </div>
                 <div class="flex items-center">
-                    <a href="index.html" class="text-xl md:text-2xl font-bold tracking-tight text-orange">NEWMAN YANGE</a>
+                    <a href="index.html" class="text-xl md:text-2xl font-bold tracking-tight text-orange">NEWMAN
+                        YANGE</a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">Home</a>
-                    <a href="#about" class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">About</a>
-                    <a href="#nynth" class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">NYNTH World</a>
-                    <a href="#music" class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">Music</a>
-                    <a href="#contact" class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">Contact</a>
+                    <a href="#home"
+                        class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">Home</a>
+                    <a href="#about"
+                        class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">About</a>
+                    <a href="#nynth"
+                        class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">NYNTH
+                        World</a>
+                    <a href="#music"
+                        class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">Music</a>
+                    <a href="#contact"
+                        class="text-gray-300 hover:text-orange uppercase text-sm font-medium tracking-wide">Contact</a>
                 </div>
             </div>
         </div>
@@ -270,12 +289,16 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden" id="home" style="background-image: url('jb.jpeg');">
-        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+    <section class="h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden" id="home"
+        style="background-image: url('jb.jpeg');">
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black via-black/80 to-transparent">
+        </div>
         <div class="text-center relative z-10">
             <h1 class="text-7xl md:text-9xl font-bold text-white mb-4">NEWMAN YANGE</h1>
             <p class="text-sm mb-8 text-white">CEO • Rapper • Financial Trader • Founder of NYNTH World</p>
-            <a href="#music" class="mt-8 border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">Explore My Music →</a>
+            <a href="#music"
+                class="mt-8 border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">Explore
+                My Music →</a>
         </div>
     </section>
 
@@ -286,14 +309,17 @@
                 <div class="space-y-8">
                     <h2 class="text-5xl font-bold">About Me</h2>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        Newman Yange is an aspiring business owner, rapper, and creative entrepreneur. As the founder of NYNTH WORLD, he embodies resilience, ambition, and legacy. Through music, branding, and storytelling, he continues to push boundaries, inspiring others to
+                        Newman Yange is an aspiring business owner, rapper, and creative entrepreneur. As the founder of
+                        NYNTH WORLD, he embodies resilience, ambition, and legacy. Through music, branding, and
+                        storytelling, he continues to push boundaries, inspiring others to
                         rise above challenges and stay ahead.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-center space-x-4 p-4 hover:bg-gray-900 rounded-lg transition-all">
                             <div class="text-orange">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
                             <div>
@@ -304,7 +330,8 @@
                         <div class="flex items-center space-x-4 p-4 hover:bg-gray-900 rounded-lg transition-all">
                             <div class="text-orange">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
                             <div>
@@ -331,25 +358,34 @@
                 <!-- Text Content -->
                 <div class="text-center md:text-left">
                     <p class="text-sm text-gray-300 mb-6">
-                        Newman Yange was born on July 15, 2007 in Nigeria. Growing up, he developed a passion for music, creativity, and entrepreneurship. Raised in a modest environment, he faced challenges that shaped his resilience and ambition. At a young age, Newman discovered
+                        Newman Yange was born on July 15, 2007 in Nigeria. Growing up, he developed a passion for music,
+                        creativity, and entrepreneurship. Raised in a modest environment, he faced challenges that
+                        shaped his resilience and ambition. At a young age, Newman discovered
                         an interest in rap and video editing, honing his skills through self-directed learning.
                     </p>
                     <p class="text-sm text-gray-300">
-                        By his teenage years just age 15, he had already started building his brand, NYNTH WORLD, as a statement of perseverance and self-worth. During high school, he explored various creative and business ventures, from music production to fashion design. His
-                        dedication to his craft led him to collaborate with notable figures, including Forex trader Jeffrey Benson. Balancing school, music, and entrepreneurship, Newman remains committed to pushing boundaries and building a lasting legacy.
+                        By his teenage years just age 15, he had already started building his brand, NYNTH WORLD, as a
+                        statement of perseverance and self-worth. During high school, he explored various creative and
+                        business ventures, from music production to fashion design. His
+                        dedication to his craft led him to collaborate with notable figures, including Forex trader
+                        Jeffrey Benson. Balancing school, music, and entrepreneurship, Newman remains committed to
+                        pushing boundaries and building a lasting legacy.
                     </p>
                 </div>
                 <!-- Image Grid -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="rounded-xl overflow-hidden hover-lift">
-                        <img src="small newman.jpeg" class="w-full h-64 object-cover" loading="lazy" alt="Newman as a child">
+                        <img src="small newman.jpeg" class="w-full h-64 object-cover" loading="lazy"
+                            alt="Newman as a child">
                     </div>
                     <div class="rounded-xl overflow-hidden hover-lift">
-                        <img src="small newmans.jpeg" class="w-full h-64 object-cover" loading="lazy" alt="Newman's family">
+                        <img src="small newmans.jpeg" class="w-full h-64 object-cover" loading="lazy"
+                            alt="Newman's family">
                     </div>
                     <!-- Wider Image Placeholder -->
                     <div class="col-span-2 rounded-xl overflow-hidden hover-lift">
-                        <img src="WhatsApp Image 2025-03-18 at 11.37.58 PM.jpeg" class="w-full h-64 object-cover" loading="lazy" alt="Wider image placeholder">
+                        <img src="WhatsApp Image 2025-03-18 at 11.37.58 PM.jpeg" class="w-full h-64 object-cover"
+                            loading="lazy" alt="Wider image placeholder">
                     </div>
                 </div>
             </div>
@@ -364,12 +400,16 @@
                 <img src="image__8_-removebg-preview.png" alt="NYNTH World Logo" class="h-24 mx-auto">
             </div>
             <p class="text-sm text-gray-300 text-center mb-12 max-w-2xl mx-auto">
-                NYNTH World is more than a clothing brand—it's a movement. Combining urban aesthetics with premium craftsmanship, it represents Newman's vision of style and substance. At its core, NYNTH World is about inclusivity, creativity, and community.
+                NYNTH World is more than a clothing brand—it's a movement. Combining urban aesthetics with premium
+                craftsmanship, it represents Newman's vision of style and substance. At its core, NYNTH World is about
+                inclusivity, creativity, and community.
             </p>
 
             <!-- Shop Now Section -->
             <div class="text-center mt-12">
-                <a href="" class="border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">Shop Now →</a>
+                <a href=""
+                    class="border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">Shop
+                    Now →</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
@@ -379,8 +419,12 @@
                 <div class="text-center md:text-left">
                     <h3 class="text-3xl font-bold mb-6">One of Our Proudest Moments</h3>
                     <p class="text-sm text-gray-300">
-                        NYNTH WORLD was a key part of a recent pop-up side event, bringing people together to celebrate creativity and inclusivity. While we weren’t the main event organizers, we played a major role in shaping the experience, adding our own touch to the atmosphere.
-                        The event was a testament to our mission: to inspire, connect, and uplift through art and fashion. It also led to a complete sell-out of our <strong>Truqha 9 Collection</strong>, marking a significant step
+                        NYNTH WORLD was a key part of a recent pop-up side event, bringing people together to celebrate
+                        creativity and inclusivity. While we weren’t the main event organizers, we played a major role
+                        in shaping the experience, adding our own touch to the atmosphere.
+                        The event was a testament to our mission: to inspire, connect, and uplift through art and
+                        fashion. It also led to a complete sell-out of our <strong>Truqha 9 Collection</strong>, marking
+                        a significant step
                         toward our bigger vision.
                     </p>
 
@@ -391,7 +435,9 @@
                 <div class="order-2 md:order-1 text-center md:text-left">
                     <h3 class="text-3xl font-bold mb-6">A Brand for Everyone</h3>
                     <p class="text-sm text-gray-300">
-                        At NYNTH World, we believe in including everyone in our journey—especially children. By involving them in our art and creative process, we aim to inspire the next generation of dreamers and creators. This inclusivity is what makes NYNTH World more than
+                        At NYNTH World, we believe in including everyone in our journey—especially children. By
+                        involving them in our art and creative process, we aim to inspire the next generation of
+                        dreamers and creators. This inclusivity is what makes NYNTH World more than
                         just a clothing brand—it’s a movement that empowers people to be part of something greater.
                     </p>
                 </div>
@@ -409,7 +455,9 @@
                 <div class="space-y-8">
                     <h2 class="text-5xl font-bold">Meeting Jeffrey Benson</h2>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        Newman Yange had the privilege of meeting Jeffrey Benson, a renowned figure in the world of finance and entrepreneurship. Their conversation revolved around innovation, leadership, and the future of global markets.
+                        Newman Yange had the privilege of meeting Jeffrey Benson, a renowned figure in the world of
+                        finance and entrepreneurship. Their conversation revolved around innovation, leadership, and the
+                        future of global markets.
                     </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
@@ -437,14 +485,19 @@
                 <div class="space-y-8">
                     <h2 class="text-5xl font-bold">Member of Spyder Academy</h2>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        In 2023, Newman Yange crossed paths with Michael Spyder, a visionary trader and philanthropist. What began as a meeting of minds has since evolved into a transformative mentorship. Michael’s strategic brilliance and dedication to giving back have deeply
+                        In 2023, Newman Yange crossed paths with Michael Spyder, a visionary trader and philanthropist.
+                        What began as a meeting of minds has since evolved into a transformative mentorship. Michael’s
+                        strategic brilliance and dedication to giving back have deeply
                         influenced Newman’s journey.
                     </p>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        As a mentor, Michael has not only shared invaluable insights into trading and entrepreneurship but also inspired Newman to weave philanthropy into his work. Their connection is a testament to the power of shared values and the impact of meaningful relationships.
+                        As a mentor, Michael has not only shared invaluable insights into trading and entrepreneurship
+                        but also inspired Newman to weave philanthropy into his work. Their connection is a testament to
+                        the power of shared values and the impact of meaningful relationships.
                     </p>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        Through this partnership, Newman continues to grow, driven by Michael’s unwavering support and the belief that true success lies in uplifting others.
+                        Through this partnership, Newman continues to grow, driven by Michael’s unwavering support and
+                        the belief that true success lies in uplifting others.
                     </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mt-8">
@@ -476,14 +529,19 @@
                 <div class="space-y-8">
                     <h2 class="text-5xl font-bold">Member of Spyder Academy</h2>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        In 2023, Newman Yange crossed paths with Michael Spyder, a visionary trader and philanthropist. What began as a meeting of minds has since evolved into a transformative mentorship. Michael’s strategic brilliance and dedication to giving back have deeply
+                        In 2023, Newman Yange crossed paths with Michael Spyder, a visionary trader and philanthropist.
+                        What began as a meeting of minds has since evolved into a transformative mentorship. Michael’s
+                        strategic brilliance and dedication to giving back have deeply
                         influenced Newman’s journey.
                     </p>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        As a mentor, Michael has not only shared invaluable insights into trading and entrepreneurship but also inspired Newman to weave philanthropy into his work. Their connection is a testament to the power of shared values and the impact of meaningful relationships.
+                        As a mentor, Michael has not only shared invaluable insights into trading and entrepreneurship
+                        but also inspired Newman to weave philanthropy into his work. Their connection is a testament to
+                        the power of shared values and the impact of meaningful relationships.
                     </p>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        Through this partnership, Newman continues to grow, driven by Michael’s unwavering support and the belief that true success lies in uplifting others.
+                        Through this partnership, Newman continues to grow, driven by Michael’s unwavering support and
+                        the belief that true success lies in uplifting others.
                     </p>
                 </div>
             </div>
@@ -496,7 +554,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-16 text-orange">NYNTH World Gallery</h2>
             <p class="text-sm text-gray-300 text-center mb-12 max-w-2xl mx-auto">
-                Explore some of the stunning designs and products from NYNTH World. Our collections are a blend of urban aesthetics and premium craftsmanship.
+                Explore some of the stunning designs and products from NYNTH World. Our collections are a blend of urban
+                aesthetics and premium craftsmanship.
             </p>
 
             <!-- Carousel Container -->
@@ -505,23 +564,28 @@
                 <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
                     <!-- Slide 1 -->
                     <div class="min-w-full flex justify-center">
-                        <img src="treqiulha.jpeg" alt="NYNTH World Product 1" class="h-[500px] w-auto object-cover rounded-lg shadow-2xl">
+                        <img src="treqiulha.jpeg" alt="NYNTH World Product 1"
+                            class="h-[500px] w-auto object-cover rounded-lg shadow-2xl">
                     </div>
                     <!-- Slide 2 -->
                     <div class="min-w-full flex justify-center">
-                        <img src="gold hari.jpeg" alt="NYNTH World Product 2" class="h-[500px] w-auto object-cover rounded-lg shadow-2xl">
+                        <img src="gold hari.jpeg" alt="NYNTH World Product 2"
+                            class="h-[500px] w-auto object-cover rounded-lg shadow-2xl">
                     </div>
                     <!-- Slide 3 -->
                     <div class="min-w-full flex justify-center">
-                        <img src="lady.jpeg" alt="NYNTH World Product 3" class="h-[500px] w-auto object-cover rounded-lg shadow-2xl">
+                        <img src="lady.jpeg" alt="NYNTH World Product 3"
+                            class="h-[500px] w-auto object-cover rounded-lg shadow-2xl">
                     </div>
                 </div>
 
                 <!-- Carousel Buttons -->
-                <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-orange p-3 rounded-full hover:bg-black/70 transition-colors">
+                <button id="prev"
+                    class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-orange p-3 rounded-full hover:bg-black/70 transition-colors">
                     <i class="fas fa-chevron-left text-2xl"></i>
                 </button>
-                <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-orange p-3 rounded-full hover:bg-black/70 transition-colors">
+                <button id="next"
+                    class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-orange p-3 rounded-full hover:bg-black/70 transition-colors">
                     <i class="fas fa-chevron-right text-2xl"></i>
                 </button>
             </div>
@@ -533,7 +597,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-16 text-orange">Music</h2>
             <p class="text-sm text-gray-300 text-center mb-12 max-w-2xl mx-auto">
-                Newman Yange's music is a reflection of his journey—raw, authentic, and powerful. Explore his latest tracks and immerse yourself in his world.
+                Newman Yange's music is a reflection of his journey—raw, authentic, and powerful. Explore his latest
+                tracks and immerse yourself in his world.
             </p>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Music Card 1 - Released -->
@@ -545,63 +610,76 @@
                     <p class="text-gray-400 mb-6">Out Now</p>
                     <div class="flex space-x-4">
                         <!-- Spotify -->
-                        <a href="spotify:artist:1Iobfd6X8lrTB0jtO7Z8Ad" onclick="window.location.href = 'https://open.spotify.com/artist/1Iobfd6X8lrTB0jtO7Z8Ad'; return false;" class="text-orange hover:text-orange/80">
+                        <a href="spotify:artist:1Iobfd6X8lrTB0jtO7Z8Ad"
+                            onclick="window.location.href = 'https://open.spotify.com/artist/1Iobfd6X8lrTB0jtO7Z8Ad'; return false;"
+                            class="text-orange hover:text-orange/80">
                             <i class="fab fa-spotify text-2xl"></i>
                         </a>
                         <!-- iTunes -->
-                        <a href="music://artist/1772573766" onclick="window.location.href = 'https://music.apple.com/us/album/jeffrey-benson/1772573766?i=1772573769'; return false;" class="text-orange hover:text-orange/80">
+                        <a href="music://artist/1772573766"
+                            onclick="window.location.href = 'https://music.apple.com/us/album/jeffrey-benson/1772573766?i=1772573769'; return false;"
+                            class="text-orange hover:text-orange/80">
                             <i class="fab fa-itunes-note text-2xl"></i>
                         </a>
                         <!-- Audiomack -->
-                        <a href="https://audiomack.com/newmanyange/song" onclick="window.location.href = 'https://audiomack.com/newmanyange/song/jeffrey-benson'; return false;" class="text-orange hover:text-orange/80">
+                        <a href="https://audiomack.com/newmanyange/song"
+                            onclick="window.location.href = 'https://audiomack.com/newmanyange/song/jeffrey-benson'; return false;"
+                            class="text-orange hover:text-orange/80">
                             <i class="fas fa-headphones text-2xl"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Music Card 2 - Coming Soon -->
+                <!-- Music Card 2 - Released -->
                 <div class="p-8 rounded-xl hover-lift">
                     <div class="text-orange text-4xl mb-4">
                         <i class="fas fa-music"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Richest Rapper</h3>
-                    <p class="text-gray-400 mb-6">Coming Soon</p>
+                    <h3 class="text-2xl font-bold mb-4">Standing Ovation</h3>
+                    <p class="text-gray-400 mb-6">Out Now</p>
                     <div class="flex space-x-4">
-                        <!-- Disabled Spotify -->
-                        <span class="text-gray-500 cursor-not-allowed">
+                        <!-- Spotify -->
+                        <a href="spotify:album:5RkUtTQv3XIcONwHu4NSaV"
+                            onclick="window.location.href = 'https://open.spotify.com/album/5RkUtTQv3XIcONwHu4NSaV'; return false;"
+                            class="text-orange hover:text-orange/80">
                             <i class="fab fa-spotify text-2xl"></i>
-                        </span>
+                        </a>
                         <!-- Disabled iTunes -->
                         <span class="text-gray-500 cursor-not-allowed">
                             <i class="fab fa-itunes-note text-2xl"></i>
                         </span>
-                        <!-- Disabled Audiomack -->
-                        <span class="text-gray-500 cursor-not-allowed">
+                        <!-- Audiomack -->
+                        <a href="https://audiomack.com/newmanyange/song/standing-ovation" target="_blank"
+                            class="text-orange hover:text-orange/80">
                             <i class="fas fa-headphones text-2xl"></i>
-                        </span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Music Card 3 - Coming Soon -->
+                <!-- Music Card 3 - Released -->
                 <div class="p-8 rounded-xl hover-lift">
                     <div class="text-orange text-4xl mb-4">
                         <i class="fas fa-music"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Soulmate</h3>
-                    <p class="text-gray-400 mb-6">Coming Soon</p>
+                    <p class="text-gray-400 mb-6">Out Now</p>
                     <div class="flex space-x-4">
-                        <!-- Disabled Spotify -->
-                        <span class="text-gray-500 cursor-not-allowed">
+                        <!-- Spotify -->
+                        <a href="spotify:album:37E5Xsebo1vczv2CeifBhI"
+                            onclick="window.location.href = 'https://open.spotify.com/album/37E5Xsebo1vczv2CeifBhI'; return false;"
+                            class="text-orange hover:text-orange/80">
                             <i class="fab fa-spotify text-2xl"></i>
-                        </span>
-                        <!-- Disabled iTunes -->
-                        <span class="text-gray-500 cursor-not-allowed">
+                        </a>
+                        <!-- iTunes -->
+                        <a href="https://music.apple.com/us/artist/newmanyange/1772573768" target="_blank"
+                            class="text-orange hover:text-orange/80">
                             <i class="fab fa-itunes-note text-2xl"></i>
-                        </span>
-                        <!-- Disabled Audiomack -->
-                        <span class="text-gray-500 cursor-not-allowed">
+                        </a>
+                        <!-- Audiomack -->
+                        <a href="https://audiomack.com/newmanyange/song/soulmate-1" target="_blank"
+                            class="text-orange hover:text-orange/80">
                             <i class="fas fa-headphones text-2xl"></i>
-                        </span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -610,36 +688,26 @@
 
     <!-- Contact Section -->
     <section class="py-24 border-t border-gray-800" id="contact">
-        <div class="max-w-5xl mx-auto px-5">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-4xl mb-8 text-orange">Let's Connect</h2>
-                    <p class="text-sm text-gray-300 mb-8">For collaborations, inquiries, or just to say hello</p>
-                    <div class="flex space-x-6">
-                        <a href="https://x.com/NewmanYange?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="text-orange hover:text-orange/80">
-                            <i class="fab fa-twitter text-2xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/newmanyange/" class="text-orange hover:text-orange/80">
-                            <i class="fab fa-instagram text-2xl"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@newman.yangehttps://www.tiktok.com/@newman.yange" class="text-orange hover:text-orange/80">
-                            <i class="fab fa-tiktok text-2xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/newman-yange-26b227338?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=ng" class="text-orange hover:text-orange/80">
-                            <i class="fab fa-linkedin text-2xl"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-bg p-8 rounded-lg">
-                    <form class="space-y-4">
-                        <input type="text" placeholder="Name" class="w-full bg-transparent border-b border-gray-600 py-2 focus:outline-none focus:border-orange">
-                        <input type="email" placeholder="Email" class="w-full bg-transparent border-b border-gray-600 py-2 focus:outline-none focus:border-orange">
-                        <textarea placeholder="Message" class="w-full bg-transparent border-b border-gray-600 py-2 focus:outline-none focus:border-orange" rows="4"></textarea>
-                        <button class="mt-8 border border-orange px-8 py-3 rounded-full hover-lift hover:bg-orange/10 hover:text-orange">
-                            Send Message →
-                        </button>
-                    </form>
-                </div>
+        <div class="max-w-5xl mx-auto px-5 text-center">
+            <h2 class="text-4xl mb-8 text-orange">Let's Connect</h2>
+            <p class="text-sm text-gray-300 mb-8 max-w-2xl mx-auto">For collaborations, inquiries, or just to say hello,
+                feel free to reach out via social media.</p>
+            <div class="flex justify-center space-x-8">
+                <a href="https://x.com/NewmanYange?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                    class="text-orange hover:text-orange/80 hover-lift">
+                    <i class="fab fa-twitter text-3xl"></i>
+                </a>
+                <a href="https://www.instagram.com/newmanyange/" class="text-orange hover:text-orange/80 hover-lift">
+                    <i class="fab fa-instagram text-3xl"></i>
+                </a>
+                <a href="https://www.tiktok.com/@newman.yangehttps://www.tiktok.com/@newman.yange"
+                    class="text-orange hover:text-orange/80 hover-lift">
+                    <i class="fab fa-tiktok text-3xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/newman-yange-26b227338?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=ng"
+                    class="text-orange hover:text-orange/80 hover-lift">
+                    <i class="fab fa-linkedin text-3xl"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -655,12 +723,14 @@
                 <!-- Add footer columns -->
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                © 2024 Newman Yange. All rights reserved.
+                © 2026 Newman Yange. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"
+        integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ=="
+        crossorigin="anonymous"></script>
     <script defer>
         const menuToggle = document.getElementById('menu-toggle'),
             mobileMenu = document.getElementById('mobile-menu'),
@@ -684,7 +754,7 @@
             autoSlideInterval;
 
         function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex*100}%)`
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`
         }
 
         function nextSlide() {
@@ -708,9 +778,9 @@
             nextSlide(), stopAutoSlide(), startAutoSlide()
         })), startAutoSlide(), carousel.addEventListener('mouseenter', stopAutoSlide), carousel.addEventListener('mouseleave', startAutoSlide);
 
-        document.addEventListener('DOMContentLoaded', (function() {
+        document.addEventListener('DOMContentLoaded', (function () {
             document.querySelectorAll('img').forEach((e => {
-                e.addEventListener('load', (function() {
+                e.addEventListener('load', (function () {
                     this.classList.add('loaded')
                 })), e.complete && e.classList.add('loaded')
             }))
@@ -723,7 +793,7 @@
 
         function updateLoader() {
             currentProgress = Math.min(currentProgress + 2 * Math.random(), 100), loaderPercentage.textContent = `${Math.floor(currentProgress)}%`, particles.forEach(((e, t) => {
-                e.style.animationDelay = `${.05*t}s`, e.style.background = `hsl(${3.6*currentProgress},100%,50%)`
+                e.style.animationDelay = `${.05 * t}s`, e.style.background = `hsl(${3.6 * currentProgress},100%,50%)`
             })), currentProgress < 100 ? requestAnimationFrame(updateLoader) : (loader.style.opacity = '0', setTimeout((() => {
                 loader.remove(), document.body.classList.remove('loading')
             }), 1e3))
