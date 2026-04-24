@@ -43,10 +43,13 @@
             --obsidian: #050505;
         }
 
+        html, body {
+            overflow-x: hidden;
+        }
+
         body {
             background-color: var(--obsidian);
             color: #fff;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -202,6 +205,13 @@
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
             transform: translateY(30px);
             opacity: 0;
+        }
+
+        /* Scroll Reveal: all .reveal-up elements start invisible */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(50px);
+            will-change: transform, opacity;
         }
 
         /* Custom Cursor */
@@ -765,18 +775,16 @@
                 }
             }, '-=200').add({
                 targets: '.hero-title',
-                translateY: [120, 0],
-                rotateX: [20, 0],
+                translateY: [80, 0],
                 opacity: [0, 1],
-                duration: 1400,
-                easing: 'spring(1, 70, 12, 0)'
+                duration: 1200,
+                easing: 'easeOutExpo'
             }, '-=1000').add({
                 targets: '.hero-subtitle',
-                translateY: [120, 0],
-                rotateX: [20, 0],
+                translateY: [80, 0],
                 opacity: [0, 1],
-                duration: 1400,
-                easing: 'spring(1, 70, 12, 0)'
+                duration: 1200,
+                easing: 'easeOutExpo'
             }, '-=1200').add({
                 targets: '.hero-desc',
                 opacity: [0, 1],
@@ -797,34 +805,39 @@
                 duration: 1200,
                 easing: 'spring(1, 80, 15, 0)'
             }, '-=1200');
+            tl.finished.then(() => { siteReady = true; });
         }
 
-        // Global hover effects on images REMOVED as per user request for simplicity
-        // document.querySelectorAll('img').forEach(img => { ... });
+        // --- Scroll Reveal: Anime.js powered, smooth one-shot animations with stagger ---
+        let siteReady = false;
 
-        // --- Animations: Continuous Scroll Reveal (Kinetic Unfolding) ---
-        const revealOptions = {
-            threshold: Array.from({ length: 20 }, (_, i) => i / 20),
-            rootMargin: '0px 0px -10% 0px'
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
+        const scrollRevealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const progress = entry.intersectionRatio;
-                    const kineticProgress = 1 - Math.pow(1 - progress, 3);
-                    
-                    const rotateX = 35 * (1 - kineticProgress);
-                    const translateY = 60 * (1 - kineticProgress);
-                    const scale = 0.9 + (0.1 * kineticProgress);
-                    
-                    entry.target.style.transform = `perspective(2000px) rotateX(${rotateX}deg) translateY(${translateY}px) scale(${scale})`;
-                    entry.target.style.opacity = kineticProgress;
+                    anime({
+                        targets: entry.target,
+                        translateY: [50, 0],
+                        opacity: [0, 1],
+                        duration: 1000,
+                        delay: parseInt(entry.target.dataset.revealDelay || 0),
+                        easing: 'easeOutExpo',
+                    });
+                    scrollRevealObserver.unobserve(entry.target);
                 }
             });
-        }, revealOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+        // Assign stagger delays to siblings within the same grid/container
+        ['.bento-grid', '#music .grid', '#nynth [class*="grid"]'].forEach(sel => {
+            const container = document.querySelector(sel);
+            if (container) {
+                container.querySelectorAll('.reveal-up').forEach((el, i) => {
+                    el.dataset.revealDelay = String(i * 130);
+                });
+            }
+        });
+
+        document.querySelectorAll('.reveal-up').forEach(el => scrollRevealObserver.observe(el));
 
         // --- UI Spells: Kinetic Interaction Engine (LERP) ---
         const grainOverlay = document.querySelector('.grain-overlay');
@@ -856,11 +869,15 @@
             }
             
             if (heroTitle && heroSubtitle) {
-                const scrollY = scrolled * 0.2;
-                const scrollRotate = scrolled * 0.05;
-                heroTitle.style.transform = `translate(${currentMouseX * 2}px, ${currentMouseY * 2 + scrollY}px) rotateX(${-currentMouseY * 0.5 + scrollRotate}deg) rotateY(${currentMouseX * 0.5}deg)`;
-                heroSubtitle.style.transform = `translate(${currentMouseX * 2}px, ${currentMouseY * 2 + scrollY * 0.5}px) rotateX(${-currentMouseY * 0.5 + scrollRotate * 0.4}deg) rotateY(${currentMouseX * 0.5}deg)`;
-                heroSubtitle.style.filter = `blur(${scrolled * 0.02}px)`;
+                const scrollY = scrolled * 0.22;
+                // Smooth 2D parallax only — no 3D rotations (they cause jank + x-overflow)
+                heroTitle.style.transform = `translate(${currentMouseX * 1.5}px, ${currentMouseY * 1.5 + scrollY}px)`;
+                heroSubtitle.style.transform = `translate(${currentMouseX * 1.5}px, ${currentMouseY * 1.5 + scrollY * 0.6}px)`;
+                if (siteReady) {
+                    const heroFade = Math.max(0, 1 - scrolled * 0.0028);
+                    heroTitle.style.opacity = heroFade;
+                    heroSubtitle.style.opacity = heroFade * 0.9;
+                }
             }
 
             // 3. Bento Interior Parallax
