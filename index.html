@@ -320,7 +320,13 @@
     </style>
 </head>
 
-<body class="loading">
+<body class="loading bg-obsidian text-white font-sans">
+    <!-- Global Background Image -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none">
+        <img src="jb.jpeg" class="w-full h-full object-cover opacity-25 grayscale contrast-125" alt="Background">
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian via-transparent to-obsidian opacity-80"></div>
+    </div>
+
     <div id="cursor"></div>
     <div id="cursor-follower"></div>
     <div class="grain-overlay"></div>
@@ -389,12 +395,6 @@
 
         <!-- HERO SECTION (Cinematic) -->
         <section id="home" class="h-screen flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-10">
-            <!-- Background Image with Shader Simulation -->
-            <div class="absolute inset-0 z-0">
-                <img src="jb.jpeg" class="w-full h-full object-cover opacity-30 grayscale contrast-125" alt="Newman">
-                <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian"></div>
-            </div>
-
             <div class="relative z-10 text-center">
                 <div class="overflow-hidden">
                     <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-[clamp(2rem,12vw,15rem)] font-display font-black text-white leading-[0.9] tracking-[-0.03em] hero-title opacity-0 whitespace-nowrap">
@@ -543,9 +543,8 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Music Card -->
-                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up">
-
+                    <!-- Music Card 1 -->
+                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="will-change:transform,opacity;min-height:320px;">
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 p-2">
                                 <i class="fab fa-spotify text-2xl text-white/20 group-hover:text-ember transition-colors"></i>
@@ -564,9 +563,8 @@
                         </div>
                     </div>
 
-                    <!-- Music Card -->
-                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.1s;">
-
+                    <!-- Music Card 2 -->
+                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="will-change:transform,opacity;min-height:320px;">
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 p-2">
                                 <i class="fab fa-apple text-2xl text-white/20 group-hover:text-ember transition-colors"></i>
@@ -585,9 +583,8 @@
                         </div>
                     </div>
 
-                    <!-- Music Card -->
-                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.2s;">
-
+                    <!-- Music Card 3 -->
+                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="will-change:transform,opacity;min-height:320px;">
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 p-2">
                                 <i class="fas fa-headphones text-2xl text-white/20 group-hover:text-ember transition-colors"></i>
@@ -824,7 +821,9 @@
                     const props = {
                         targets: entry.target,
                         opacity: [0, 1],
-                        duration: 700,
+                        translateY: [30, 0],
+                        scale: [0.96, 1],
+                        duration: 600,
                         delay: parseInt(entry.target.dataset.revealDelay || 0),
                         easing: 'easeOutExpo',
                     };
@@ -842,7 +841,9 @@
             const container = document.querySelector(sel);
             if (container) {
                 container.querySelectorAll('.reveal-up').forEach((el, i) => {
-                    el.dataset.revealDelay = String(i * 130);
+                    // Music grid gets tighter stagger (70ms), others 120ms
+                    const step = sel.includes('music') ? 70 : 120;
+                    el.dataset.revealDelay = String(i * step);
                 });
             }
         });
