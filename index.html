@@ -213,8 +213,21 @@
             transform: translateY(50px);
             will-change: transform, opacity;
         }
+        .reveal-up[data-reveal="left"] {
+            transform: translateX(-80px);
+        }
+        .reveal-up[data-reveal="right"] {
+            transform: translateX(80px);
+        }
 
-        /* Custom Cursor */
+        /* Loader bar smooth transition */
+        #loader-bar {
+            transition: width 0.08s linear;
+        }
+        /* GPU-composite bento images */
+        .bento-grid img {
+            will-change: transform;
+        }
         #cursor {
             position: fixed;
             width: 10px;
@@ -262,10 +275,12 @@
             height: 450px;
             border-radius: 2rem;
             overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
             transform-origin: bottom center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             cursor: pointer;
+            opacity: 0;
+            will-change: transform;
         }
 
         @media (max-width: 768px) {
@@ -475,16 +490,16 @@
 
         <!-- NYNTH WORLD (Horizontal Slider Simulation) -->
         <section id="nynth" class="py-20 md:py-40 bg-white text-black rounded-[2rem] md:rounded-[4rem] mx-4 relative overflow-hidden">
-            <div class="px-6 md:px-10 mb-20 flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div class="px-6 md:px-10 mb-20 flex flex-col md:flex-row justify-between items-start md:items-center reveal-up">
                 <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[clamp(2.5rem,8vw,10rem)] font-display font-black tracking-tighter leading-none mb-6 md:mb-0">NYNTH WORLD.</h2>
-                <div class="text-right">
+                <div class="text-right reveal-up">
                     <p class="text-[10px] font-black uppercase tracking-[0.3em] mb-2">Collection 2025</p>
                     <div class="h-2 w-32 bg-black"></div>
                 </div>
             </div>
 
             <!-- Fanned Card Deck -->
-            <div class="card-deck-container reveal-up">
+            <div class="card-deck-container">
                 <div class="deck-card group">
                     <img src="chair (12).jpeg" class="w-full h-full object-cover transition-transform duration-700" alt="Nynth Item">
                 </div>
@@ -503,10 +518,10 @@
             </div>
 
             <div class="px-6 md:px-10 mt-12 md:mt-20 grid lg:grid-cols-2 gap-8 md:gap-20">
-                <p class="text-xl md:text-3xl font-medium leading-tight">
+                <p class="text-xl md:text-3xl font-medium leading-tight reveal-up" data-reveal="left">
                     NYNTH World is more than a clothing brand—it's a movement. Combining urban aesthetics with premium craftsmanship, it represents Newman's vision of style and substance.
                 </p>
-                <div class="space-y-6">
+                <div class="space-y-6 reveal-up" data-reveal="right">
                     <p class="text-gray-600">
                         At NYNTH World, we believe in including everyone in our journey—especially children. By involving them in our art and creative process, we aim to inspire the next generation of dreamers.
                     </p>
@@ -530,10 +545,7 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <!-- Music Card -->
                     <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up">
-                        <div class="absolute inset-0 z-0">
-                            <img src="jb.jpeg" class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-all duration-1000" alt="Jeffrey Benson">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                        </div>
+
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 p-2">
                                 <i class="fab fa-spotify text-2xl text-white/20 group-hover:text-ember transition-colors"></i>
@@ -554,10 +566,7 @@
 
                     <!-- Music Card -->
                     <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.1s;">
-                        <div class="absolute inset-0 z-0">
-                            <img src="small newman.jpeg" class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-all duration-1000" alt="Standing Ovation">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                        </div>
+
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 p-2">
                                 <i class="fab fa-apple text-2xl text-white/20 group-hover:text-ember transition-colors"></i>
@@ -578,10 +587,7 @@
 
                     <!-- Music Card -->
                     <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.2s;">
-                        <div class="absolute inset-0 z-0">
-                            <img src="newmn.jpeg" class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-all duration-1000" alt="Soulmate">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                        </div>
+
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 p-2">
                                 <i class="fas fa-headphones text-2xl text-white/20 group-hover:text-ember transition-colors"></i>
@@ -741,14 +747,14 @@
 
         let progress = 0;
         const interval = setInterval(() => {
-            progress += Math.random() * 15;
+            progress += Math.random() * 4 + 1;
             if (progress >= 100) {
                 progress = 100;
                 clearInterval(interval);
-                setTimeout(startSite, 500);
+                setTimeout(startSite, 400);
             }
             loaderBar.style.width = progress + '%';
-        }, 100);
+        }, 30);
 
         function startSite() {
             const tl = anime.timeline({
@@ -814,21 +820,25 @@
         const scrollRevealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    anime({
+                    const dir = entry.target.dataset.reveal;
+                    const props = {
                         targets: entry.target,
-                        translateY: [50, 0],
                         opacity: [0, 1],
-                        duration: 1000,
+                        duration: 700,
                         delay: parseInt(entry.target.dataset.revealDelay || 0),
                         easing: 'easeOutExpo',
-                    });
+                    };
+                    if (dir === 'left')  props.translateX = [-80, 0];
+                    else if (dir === 'right') props.translateX = [80, 0];
+                    else props.translateY = [50, 0];
+                    anime(props);
                     scrollRevealObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         // Assign stagger delays to siblings within the same grid/container
-        ['.bento-grid', '#music .grid', '#nynth [class*="grid"]'].forEach(sel => {
+        ['.bento-grid', '#music .grid', '#nynth .grid'].forEach(sel => {
             const container = document.querySelector(sel);
             if (container) {
                 container.querySelectorAll('.reveal-up').forEach((el, i) => {
@@ -837,7 +847,74 @@
             }
         });
 
+        // NYNTH section: stagger heading, card deck, and bottom text with natural cascade
+        document.querySelectorAll('#nynth .reveal-up').forEach((el, i) => {
+            if (!el.dataset.revealDelay) {
+                el.dataset.revealDelay = String(i * 150);
+            }
+        });
+
         document.querySelectorAll('.reveal-up').forEach(el => scrollRevealObserver.observe(el));
+
+        // --- Card Deck: Stack-then-Fan Animation ---
+        const deckContainer = document.querySelector('.card-deck-container');
+        const deckCards = Array.from(document.querySelectorAll('.deck-card'));
+
+        // Desktop and mobile fan target positions
+        const fanDesktop = [
+            { rotate: -20, tx: -180 },
+            { rotate: -10, tx: -90 },
+            { rotate: 0,   tx: 0   },
+            { rotate: 10,  tx: 90  },
+            { rotate: 20,  tx: 180 },
+        ];
+        const fanMobile = [
+            { rotate: -15, tx: -80 },
+            { rotate: -7,  tx: -40 },
+            { rotate: 0,   tx: 0   },
+            { rotate: 7,   tx: 40  },
+            { rotate: 15,  tx: 80  },
+        ];
+
+        const deckObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Step 1: Force all cards to stacked position (invisible)
+                    deckCards.forEach(card => {
+                        card.style.transform = 'rotate(0deg) translateX(0px)';
+                        card.style.opacity = '0';
+                    });
+
+                    // Step 2: Fade in stacked (all at once, center position)
+                    anime({
+                        targets: deckCards,
+                        opacity: [0, 1],
+                        duration: 500,
+                        delay: 200,
+                        easing: 'easeOutExpo',
+                        complete: () => {
+                            // Step 3: Fan out with stagger after a beat
+                            const isMobile = window.innerWidth <= 768;
+                            const positions = isMobile ? fanMobile : fanDesktop;
+                            deckCards.forEach((card, i) => {
+                                anime({
+                                    targets: card,
+                                    rotate: positions[i].rotate,
+                                    translateX: positions[i].tx,
+                                    duration: 900,
+                                    delay: 300 + i * 90,
+                                    easing: 'easeOutBack',
+                                });
+                            });
+                        }
+                    });
+
+                    deckObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (deckContainer) deckObserver.observe(deckContainer);
 
         // --- UI Spells: Kinetic Interaction Engine (LERP) ---
         const grainOverlay = document.querySelector('.grain-overlay');
@@ -880,12 +957,9 @@
                 }
             }
 
-            // 3. Bento Interior Parallax
+            // 3. Bento Interior Parallax (no getBoundingClientRect — GPU only)
             bentoImgs.forEach(img => {
-                const rect = img.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    img.style.transform = `scale(1.1) translate(${currentMouseX}px, ${currentMouseY}px)`;
-                }
+                img.style.transform = `scale(1.1) translate(${currentMouseX}px, ${currentMouseY}px)`;
             });
 
             lastScrolled = scrolled;
