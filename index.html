@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="selection:bg-ember selection:text-black">
+<html lang="en" class="selection:bg-ember selection:text-black scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -50,7 +50,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Grain Texture Overlay */
+        /* Kinetic Grain Texture Overlay */
         .grain-overlay {
             position: fixed;
             top: 0;
@@ -59,8 +59,9 @@
             height: 100%;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.05;
+            opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            transition: opacity 0.3s ease;
         }
 
         /* Custom Scroll Styles */
@@ -92,8 +93,14 @@
         /* Bento Grid Specifics */
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: 1fr;
             gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(12, 1fr);
+            }
         }
 
         /* Glassmorphism V2 */
@@ -107,6 +114,31 @@
             transform: translateX(-50%) !important;
             width: 90%;
             max-width: 1024px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        #mobile-menu.active {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         /* Kinetic Shimmer for Loader */
@@ -120,16 +152,22 @@
             animation: shimmer 2s infinite linear;
         }
 
+        /* Concentric Radii Optimization */
         .glass-premium {
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+            border-radius: 3rem; /* Outer R */
         }
 
-        /* Custom Premium Scrollbar */
+        .glass-premium > * {
+            border-radius: calc(3rem - 3rem); /* R_inner = R_outer - Padding (p-12 = 3rem) */
+        }
+
+        /* Premium Scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
             background: var(--obsidian);
@@ -189,6 +227,71 @@
             z-index: 9999;
             transition: transform 0.3s ease-out;
         }
+
+        /* Fanned Deck Specifics */
+        .card-deck-container {
+            position: relative;
+            width: 100%;
+            height: 650px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 2000px;
+            margin: 4rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .card-deck-container {
+                height: 450px;
+            }
+        }
+
+        .deck-card {
+            position: absolute;
+            width: 300px;
+            height: 450px;
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-origin: bottom center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .deck-card {
+                width: 200px;
+                height: 300px;
+            }
+            .card-deck-container {
+                height: 450px;
+            }
+        }
+
+        /* Initial Spread with CSS variables for X-offset */
+        .deck-card:nth-child(1) { --tx: -180px; transform: rotate(-20deg) translateX(var(--tx)); z-index: 1; }
+        .deck-card:nth-child(2) { --tx: -90px; transform: rotate(-10deg) translateX(var(--tx)); z-index: 2; }
+        .deck-card:nth-child(3) { --tx: 0; transform: rotate(0deg) translateX(var(--tx)); z-index: 3; }
+        .deck-card:nth-child(4) { --tx: 90px; transform: rotate(10deg) translateX(var(--tx)); z-index: 4; }
+        .deck-card:nth-child(5) { --tx: 180px; transform: rotate(20deg) translateX(var(--tx)); z-index: 5; }
+
+        @media (max-width: 768px) {
+            .deck-card:nth-child(1) { --tx: -80px; transform: rotate(-15deg) translateX(var(--tx)); }
+            .deck-card:nth-child(2) { --tx: -40px; transform: rotate(-7deg) translateX(var(--tx)); }
+            .deck-card:nth-child(3) { --tx: 0; transform: rotate(0deg) translateX(var(--tx)); }
+            .deck-card:nth-child(4) { --tx: 40px; transform: rotate(7deg) translateX(var(--tx)); }
+            .deck-card:nth-child(5) { --tx: 80px; transform: rotate(15deg) translateX(var(--tx)); }
+        }
+
+        /* Hover Reveal - Straighten without moving */
+        .deck-card:hover {
+            z-index: 50 !important;
+            transform: rotate(0deg) translateX(var(--tx)) !important;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        /* Focus dimming - REMOVED as per user request */
+        /* .card-deck-container:hover .deck-card:not(:hover) { ... } */
     </style>
 </head>
 
@@ -214,26 +317,53 @@
         <div class="w-64 h-[1px] bg-white/10 relative">
             <div id="loader-bar" class="absolute inset-y-0 left-0 bg-ember w-0"></div>
         </div>
-        <p class="mt-8 font-sans text-xs tracking-[0.4em] uppercase text-gray-500 font-bold">STAY AHEAD</p>
+        <p class="mt-8 font-sans text-xs tracking-[0.4em] uppercase text-gray-500 font-bold">STAY ABOVE</p>
     </div>
 
     <main data-lenis-prevent style="perspective: 2000px;">
         <!-- NAVIGATION (Floating Minimal) -->
         <nav class="fixed top-10 left-1/2 -translate-x-1/2 z-[500] w-[90%] max-w-5xl flex justify-between items-center glass-premium rounded-full px-8 py-4 opacity-0" id="nav-floating">
             <div class="text-xl font-display font-black tracking-tighter text-ember">NY.</div>
-            <div class="hidden md:flex space-x-10">
-                <a href="#about" class="nav-link text-[10px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-ember transition-colors">Origins</a>
-                <a href="#nynth" class="nav-link text-[10px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-ember transition-colors">World</a>
-                <a href="#music" class="nav-link text-[10px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-ember transition-colors">Archive</a>
-                <a href="#contact" class="nav-link text-[10px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-ember transition-colors">Connect</a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex space-x-10">
+                <div class="magnetic-wrap"><a href="#about" class="nav-link text-[10px] font-black uppercase tracking-[0.3em] text-white/50 hover:text-ember transition-colors">Origins</a></div>
+                <div class="magnetic-wrap"><a href="#nynth" class="nav-link text-[10px] font-black uppercase tracking-[0.3em] text-white/50 hover:text-ember transition-colors">World</a></div>
+                <div class="magnetic-wrap"><a href="#music" class="nav-link text-[10px] font-black uppercase tracking-[0.3em] text-white/50 hover:text-ember transition-colors">Archive</a></div>
+                <div class="magnetic-wrap"><a href="#contact" class="nav-link text-[10px] font-black uppercase tracking-[0.3em] text-white/50 hover:text-ember transition-colors">Connect</a></div>
             </div>
-            <div class="magnetic-wrap">
-                <a href="#music" class="px-6 py-2 bg-ember text-black text-[10px] font-black rounded-full uppercase tracking-widest hover:scale-105 transition-transform">Live Now</a>
+
+            <div class="flex items-center space-x-4">
+                <div class="hidden lg:block magnetic-wrap">
+                    <a href="#music" class="px-6 py-2 bg-ember text-black text-[10px] font-black rounded-full uppercase tracking-widest hover:scale-105 transition-transform">Live Now</a>
+                </div>
+                <!-- Mobile Menu Toggle -->
+                <button id="menu-toggle" class="block lg:hidden text-white p-2 focus:outline-none border border-white/10 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
             </div>
         </nav>
 
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu">
+            <button id="menu-close" class="absolute top-10 right-10 text-white text-2xl p-4">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex flex-col items-center space-y-8">
+                <a href="#about" class="mobile-nav-link text-4xl font-display font-black text-white/40 hover:text-ember transition-colors uppercase tracking-tighter">Origins</a>
+                <a href="#nynth" class="mobile-nav-link text-4xl font-display font-black text-white/40 hover:text-ember transition-colors uppercase tracking-tighter">World</a>
+                <a href="#music" class="mobile-nav-link text-4xl font-display font-black text-white/40 hover:text-ember transition-colors uppercase tracking-tighter">Archive</a>
+                <a href="#contact" class="mobile-nav-link text-4xl font-display font-black text-white/40 hover:text-ember transition-colors uppercase tracking-tighter">Connect</a>
+            </div>
+            <div class="mt-20">
+                <a href="#music" class="px-10 py-4 bg-ember text-black text-xs font-black rounded-full uppercase tracking-widest">Live Now</a>
+            </div>
+        </div>
+
         <!-- HERO SECTION (Cinematic) -->
-        <section id="home" class="h-screen flex flex-col items-center justify-center relative overflow-hidden px-10">
+        <section id="home" class="h-screen flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-10">
             <!-- Background Image with Shader Simulation -->
             <div class="absolute inset-0 z-0">
                 <img src="jb.jpeg" class="w-full h-full object-cover opacity-30 grayscale contrast-125" alt="Newman">
@@ -242,53 +372,53 @@
 
             <div class="relative z-10 text-center">
                 <div class="overflow-hidden">
-                    <h1 class="text-[clamp(3rem,18vw,15rem)] font-display font-black text-white leading-[0.8] tracking-tighter hero-title opacity-0 whitespace-nowrap">
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-[clamp(2rem,12vw,15rem)] font-display font-black text-white leading-[0.9] tracking-[-0.03em] hero-title opacity-0 whitespace-nowrap">
                         NEWMAN
                     </h1>
                 </div>
                 <div class="overflow-hidden">
-                    <h1 class="text-[clamp(3rem,18vw,15rem)] font-display font-black text-transparent stroke-text leading-[0.8] tracking-tighter hero-subtitle opacity-0 whitespace-nowrap" 
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-[clamp(2rem,12vw,15rem)] font-display font-black text-transparent stroke-text leading-[0.9] tracking-[-0.03em] hero-subtitle opacity-0 whitespace-nowrap" 
                         style="-webkit-text-stroke: 1px rgba(255,255,255,0.3);">
                         YANGE
                     </h1>
                 </div>
                 <div class="mt-12 hero-desc opacity-0">
-                    <p class="text-xs md:text-sm font-sans tracking-[0.5em] text-ember font-black uppercase">
+                    <p class="text-[10px] sm:text-xs md:text-sm font-sans tracking-[0.2em] md:tracking-[0.5em] text-ember font-black uppercase">
                         Rapper • CEO • Visionary
                     </p>
                 </div>
             </div>
 
             <!-- Kinetic Elements -->
-            <div class="absolute bottom-20 left-10 flex space-x-20 opacity-0 hero-meta">
+            <div class="absolute bottom-10 left-6 md:bottom-20 md:left-10 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-20 opacity-0 hero-meta">
                 <div class="space-y-2">
                     <p class="text-[8px] font-black text-gray-500 uppercase tracking-widest">Base</p>
-                    <p class="text-xs font-bold text-white">Lagos, Nigeria</p>
+                    <p class="text-[10px] md:text-xs font-bold text-white">Lagos, Nigeria</p>
                 </div>
                 <div class="space-y-2">
                     <p class="text-[8px] font-black text-gray-500 uppercase tracking-widest">Current Project</p>
-                    <p class="text-xs font-bold text-white uppercase">Nynth World</p>
+                    <p class="text-[10px] md:text-xs font-bold text-white uppercase">Nynth World</p>
                 </div>
             </div>
         </section>
 
         <!-- ABOUT (Bento Kinetic) -->
-        <section id="about" class="min-h-screen py-40 px-10">
+        <section id="about" class="min-h-screen py-20 md:py-40 px-6 md:px-10">
             <div class="max-w-7xl mx-auto">
-                <div class="mb-32 flex justify-between items-end">
+                <div class="mb-12 md:mb-32 flex flex-col md:flex-row justify-between items-start md:items-end">
                     <div class="max-w-xl">
                         <h2 class="text-ember text-xs font-black uppercase tracking-[0.5em] mb-6">01. The Origin</h2>
-                        <h3 class="text-5xl md:text-8xl font-display font-bold text-white leading-tight">Beyond the <br> Boundaries.</h3>
+                        <h3 class="text-4xl md:text-8xl font-display font-bold text-white leading-[1.1] tracking-[-0.02em]">Beyond the <br> Boundaries.</h3>
                     </div>
-                    <div class="hidden lg:block text-right pb-4">
+                    <div class="block lg:block text-right pb-4 mt-6 md:mt-0">
                         <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">Est. 2007</p>
                     </div>
                 </div>
 
                 <div class="bento-grid">
                     <!-- Main Story Card -->
-                    <div class="col-span-12 lg:col-span-8 glass-premium p-12 rounded-[2rem] flex flex-col justify-between min-h-[500px] reveal-up">
-                        <p class="text-2xl md:text-4xl font-medium text-gray-300 leading-tight mb-20">
+                    <div class="col-span-12 lg:col-span-8 glass-premium p-6 md:p-12 rounded-[2rem] flex flex-col justify-between min-h-[400px] md:min-h-[500px] reveal-up">
+                        <p class="text-xl md:text-4xl font-medium text-gray-300 leading-tight mb-8 md:mb-20">
                             Newman Yange is an aspiring business owner, rapper, and creative entrepreneur. As the founder of NYNTH WORLD, he embodies resilience, ambition, and legacy.
                         </p>
                         <div class="flex justify-between items-end">
@@ -300,31 +430,31 @@
                                     <span class="text-xs font-black uppercase tracking-widest">Read Journey</span>
                                 </a>
                             </div>
-                            <div class="text-right">
-                                <span class="text-6xl font-display font-black text-white/5 italic">Legacy</span>
+                            <div class="text-right hidden sm:block">
+                                <span class="text-4xl md:text-6xl font-display font-black text-white/5 italic">Legacy</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Image Card -->
-                    <div class="col-span-12 md:col-span-6 lg:col-span-4 h-[500px] rounded-[2rem] overflow-hidden reveal-up">
+                    <div class="col-span-12 md:col-span-6 lg:col-span-4 h-[350px] md:h-[500px] rounded-[2rem] overflow-hidden reveal-up">
                         <img src="newmn.jpeg" class="w-full h-full object-cover hover:scale-110 transition-all duration-700" alt="About Newman">
                     </div>
 
                     <!-- Stats Card -->
-                    <div class="col-span-12 md:col-span-6 lg:col-span-3 glass-premium p-10 rounded-[2rem] reveal-up">
+                    <div class="col-span-12 md:col-span-6 lg:col-span-3 glass-premium p-6 md:p-10 rounded-[2rem] reveal-up">
                         <div class="text-ember text-4xl mb-4 font-black">15+</div>
                         <p class="text-xs font-black text-gray-500 uppercase tracking-widest">Creative Projects</p>
                     </div>
 
                     <!-- Small Visual Card -->
-                    <div class="col-span-12 md:col-span-6 lg:col-span-5 h-[300px] rounded-[2rem] overflow-hidden reveal-up">
+                    <div class="col-span-12 md:col-span-6 lg:col-span-5 h-[250px] md:h-[300px] rounded-[2rem] overflow-hidden reveal-up">
                         <img src="small newman.jpeg" class="w-full h-full object-cover hover:scale-110 transition-all duration-700" alt="Visual">
                     </div>
 
 
                     <!-- Final Story Block -->
-                    <div class="col-span-12 lg:col-span-4 glass-premium p-10 rounded-[2rem] flex items-center reveal-up">
+                    <div class="col-span-12 lg:col-span-4 glass-premium p-6 md:p-10 rounded-[2rem] flex items-center reveal-up">
                         <p class="text-gray-400 text-sm leading-relaxed">
                             By age 15, he had already started building NYNTH WORLD as a statement of perseverance. His dedication led to collaborations with notable figures including Jeffrey Benson.
                         </p>
@@ -334,36 +464,36 @@
         </section>
 
         <!-- NYNTH WORLD (Horizontal Slider Simulation) -->
-        <section id="nynth" class="py-40 bg-white text-black rounded-[4rem] mx-4 relative overflow-hidden">
-            <div class="px-10 mb-20 flex justify-between items-center">
-                <h2 class="text-[clamp(3rem,10vw,10rem)] font-display font-black tracking-tighter leading-none">NYNTH WORLD.</h2>
+        <section id="nynth" class="py-20 md:py-40 bg-white text-black rounded-[2rem] md:rounded-[4rem] mx-4 relative overflow-hidden">
+            <div class="px-6 md:px-10 mb-20 flex flex-col md:flex-row justify-between items-start md:items-center">
+                <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[clamp(2.5rem,8vw,10rem)] font-display font-black tracking-tighter leading-none mb-6 md:mb-0">NYNTH WORLD.</h2>
                 <div class="text-right">
                     <p class="text-[10px] font-black uppercase tracking-[0.3em] mb-2">Collection 2025</p>
                     <div class="h-2 w-32 bg-black"></div>
                 </div>
             </div>
 
-            <!-- Horizontal Filmstrip -->
-            <div class="flex space-x-10 overflow-x-auto pb-20 px-10 no-scrollbar select-none" id="horizontal-film">
-                <div class="min-w-[400px] h-[600px] rounded-[2rem] overflow-hidden bg-gray-100 flex-shrink-0 group">
-                    <img src="chair (12).jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Nynth Item">
+            <!-- Fanned Card Deck -->
+            <div class="card-deck-container reveal-up">
+                <div class="deck-card group">
+                    <img src="chair (12).jpeg" class="w-full h-full object-cover transition-transform duration-700" alt="Nynth Item">
                 </div>
-                <div class="min-w-[400px] h-[600px] rounded-[2rem] overflow-hidden bg-gray-100 flex-shrink-0 group">
-                    <img src="chair (8).jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Nynth Item">
+                <div class="deck-card group">
+                    <img src="chair (8).jpeg" class="w-full h-full object-cover transition-transform duration-700" alt="Nynth Item">
                 </div>
-                <div class="min-w-[400px] h-[600px] rounded-[2rem] overflow-hidden bg-gray-100 flex-shrink-0 group">
-                    <img src="treqiulha.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Nynth Item">
+                <div class="deck-card group">
+                    <img src="treqiulha.jpeg" class="w-full h-full object-cover transition-transform duration-700" alt="Nynth Item">
                 </div>
-                <div class="min-w-[400px] h-[600px] rounded-[2rem] overflow-hidden bg-gray-100 flex-shrink-0 group">
-                    <img src="gold hari.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Nynth Item">
+                <div class="deck-card group">
+                    <img src="gold hari.jpeg" class="w-full h-full object-cover transition-transform duration-700" alt="Nynth Item">
                 </div>
-                <div class="min-w-[400px] h-[600px] rounded-[2rem] overflow-hidden bg-gray-100 flex-shrink-0 group">
-                    <img src="spyder-meet-3.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Nynth Item">
+                <div class="deck-card group">
+                    <img src="spyder-meet-3.jpeg" class="w-full h-full object-cover transition-transform duration-700" alt="Nynth Item">
                 </div>
             </div>
 
-            <div class="px-10 mt-20 grid lg:grid-cols-2 gap-20">
-                <p class="text-3xl font-medium leading-tight">
+            <div class="px-6 md:px-10 mt-12 md:mt-20 grid lg:grid-cols-2 gap-8 md:gap-20">
+                <p class="text-xl md:text-3xl font-medium leading-tight">
                     NYNTH World is more than a clothing brand—it's a movement. Combining urban aesthetics with premium craftsmanship, it represents Newman's vision of style and substance.
                 </p>
                 <div class="space-y-6">
@@ -371,7 +501,7 @@
                         At NYNTH World, we believe in including everyone in our journey—especially children. By involving them in our art and creative process, we aim to inspire the next generation of dreamers.
                     </p>
                     <div class="magnetic-wrap">
-                        <button class="px-12 py-5 bg-black text-white rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all">
+                        <button class="px-8 py-4 md:px-12 md:py-5 bg-black text-white rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all">
                             Enter the World
                         </button>
                     </div>
@@ -380,16 +510,16 @@
         </section>
 
         <!-- MUSIC (Interactive Cards) -->
-        <section id="music" class="py-40 px-10">
+        <section id="music" class="py-20 md:py-40 px-6 md:px-10">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-32">
+                <div class="text-center mb-12 md:mb-32">
                     <h2 class="text-ember text-xs font-black uppercase tracking-[0.5em] mb-6">03. The Archive</h2>
-                    <h3 class="text-5xl md:text-9xl font-display font-black text-white">MUSIC</h3>
+                    <h3 class="text-5xl md:text-9xl font-display font-black text-white tracking-[-0.03em] leading-none">MUSIC</h3>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <!-- Music Card -->
-                    <div class="bg-obsidian border border-white/5 p-10 rounded-[3rem] group relative overflow-hidden reveal-up">
+                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up">
                         <div class="absolute inset-0 z-0">
                             <img src="jb.jpeg" class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-all duration-1000" alt="Jeffrey Benson">
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
@@ -403,7 +533,7 @@
                             </div>
                             <h4 class="text-3xl font-bold mb-2 text-white">Jeffrey Benson</h4>
                             <p class="text-gray-500 font-black uppercase tracking-widest text-[10px]">Single • 2024</p>
-                            <div class="mt-20 flex justify-between items-center">
+                            <div class="mt-8 md:mt-20 flex justify-between items-center">
                                 <span class="text-xs font-black text-ember">LISTEN NOW</span>
                                 <a href="https://open.spotify.com/artist/1Iobfd6X8lrTB0jtO7Z8Ad" target="_blank" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
                                     <i class="fas fa-arrow-right -rotate-45 text-xs"></i>
@@ -413,7 +543,7 @@
                     </div>
 
                     <!-- Music Card -->
-                    <div class="bg-obsidian border border-white/5 p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.1s;">
+                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.1s;">
                         <div class="absolute inset-0 z-0">
                             <img src="small newman.jpeg" class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-all duration-1000" alt="Standing Ovation">
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
@@ -427,7 +557,7 @@
                             </div>
                             <h4 class="text-3xl font-bold mb-2 text-white">Standing Ovation</h4>
                             <p class="text-gray-500 font-black uppercase tracking-widest text-[10px]">Single • 2024</p>
-                            <div class="mt-20 flex justify-between items-center">
+                            <div class="mt-8 md:mt-20 flex justify-between items-center">
                                 <span class="text-xs font-black text-ember">LISTEN NOW</span>
                                 <a href="https://open.spotify.com/album/5RkUtTQv3XIcONwHu4NSaV" target="_blank" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
                                     <i class="fas fa-arrow-right -rotate-45 text-xs"></i>
@@ -437,7 +567,7 @@
                     </div>
 
                     <!-- Music Card -->
-                    <div class="bg-obsidian border border-white/5 p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.2s;">
+                    <div class="bg-obsidian border border-white/5 p-6 md:p-10 rounded-[3rem] group relative overflow-hidden reveal-up" style="transition-delay: 0.2s;">
                         <div class="absolute inset-0 z-0">
                             <img src="newmn.jpeg" class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-all duration-1000" alt="Soulmate">
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
@@ -451,7 +581,7 @@
                             </div>
                             <h4 class="text-3xl font-bold mb-2 text-white">Soulmate</h4>
                             <p class="text-gray-500 font-black uppercase tracking-widest text-[10px]">Single • 2024</p>
-                            <div class="mt-20 flex justify-between items-center">
+                            <div class="mt-8 md:mt-20 flex justify-between items-center">
                                 <span class="text-xs font-black text-ember">LISTEN NOW</span>
                                 <a href="https://open.spotify.com/album/37E5Xsebo1vczv2CeifBhI" target="_blank" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
                                     <i class="fas fa-arrow-right -rotate-45 text-xs"></i>
@@ -465,14 +595,14 @@
         </section>
 
         <!-- CONTACT (Minimalist) -->
-        <section id="contact" class="py-40 px-10">
+        <section id="contact" class="py-20 md:py-40 px-6 md:px-10">
             <div class="max-w-7xl mx-auto flex flex-col items-center">
                 <div class="text-center mb-24">
                     <h2 class="text-ember text-xs font-black uppercase tracking-[0.5em] mb-6">04. The Network</h2>
-                    <h3 class="text-5xl md:text-8xl font-display font-black text-white">GET IN TOUCH</h3>
+                    <h3 class="text-3xl sm:text-5xl md:text-8xl font-display font-black text-white tracking-[-0.03em] leading-none">GET IN TOUCH</h3>
                 </div>
 
-                <div class="w-full max-w-4xl glass-premium p-12 rounded-[3rem] reveal-up">
+                <div class="w-full max-w-4xl glass-premium p-6 md:p-12 rounded-[3rem] reveal-up">
                     <form class="space-y-12">
                         <div class="grid md:grid-cols-2 gap-12">
                             <div class="space-y-4">
@@ -488,13 +618,13 @@
                             <label class="text-[10px] font-black uppercase tracking-widest text-gray-500">Your Vision</label>
                             <textarea rows="4" class="w-full bg-transparent border-b border-white/10 py-4 text-2xl focus:outline-none focus:border-ember transition-all resize-none" placeholder="Tell me about your project..."></textarea>
                         </div>
-                        <div class="flex justify-between items-center">
+                        <div class="flex flex-col sm:flex-row gap-6 sm:gap-0 justify-between items-start sm:items-center">
                             <div class="flex space-x-6">
                                 <a href="https://www.instagram.com/newmanyange/" class="text-white/30 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
                                 <a href="mailto:newmanyange@gmail.com" class="text-white/30 hover:text-white transition-colors"><i class="fas fa-envelope text-2xl"></i></a>
                             </div>
                             <div class="magnetic-wrap">
-                                <button type="submit" class="px-16 py-6 bg-white text-black rounded-full font-black uppercase tracking-widest hover:bg-ember transition-all">
+                                <button type="submit" class="px-10 py-4 md:px-16 md:py-6 bg-white text-black rounded-full font-black uppercase tracking-widest hover:bg-ember transition-all">
                                     Send Message
                                 </button>
                             </div>
@@ -505,7 +635,7 @@
         </section>
 
         <!-- FOOTER -->
-        <footer class="py-20 px-10 border-t border-white/5">
+        <footer class="py-20 px-6 md:px-10 border-t border-white/5">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
                 <div class="text-center md:text-left mb-10 md:mb-0">
                     <h2 class="text-2xl font-display font-black tracking-tighter text-white mb-2">NEWMAN YANGE</h2>
@@ -522,14 +652,11 @@
     <script>
         // --- Infrastructure: Smooth Scroll ---
         const lenis = new Lenis({
-            duration: 1.5,
+            duration: 1.8,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 1.1,
-            smoothTouch: false,
-            touchMultiplier: 2,
+            wheelMultiplier: 1.2,
+            lerp: 0.1,
             infinite: false,
         });
 
@@ -621,111 +748,164 @@
 
             tl.add({
                 targets: '.letter',
-                translateY: [0, -100],
-                opacity: 0,
-                delay: anime.stagger(30),
-                duration: 800
+                translateY: [40, 0],
+                rotateX: [90, 0],
+                opacity: [0, 1],
+                delay: anime.stagger(40),
+                duration: 1000,
+                easing: 'spring(1, 80, 13, 0)'
             }).add({
                 targets: loader,
                 translateY: '-100%',
-                duration: 1200,
+                duration: 1400,
+                easing: 'easeInOutQuart',
                 complete: () => {
                     document.body.classList.remove('loading');
                     loader.style.display = 'none';
                 }
-            }, '-=400').add({
+            }, '-=200').add({
                 targets: '.hero-title',
-                translateY: [100, 0],
+                translateY: [120, 0],
+                rotateX: [20, 0],
                 opacity: [0, 1],
-                duration: 1200
-            }, '-=800').add({
-                targets: '.hero-subtitle',
-                translateY: [100, 0],
-                opacity: [0, 1],
-                duration: 1200
+                duration: 1400,
+                easing: 'spring(1, 70, 12, 0)'
             }, '-=1000').add({
+                targets: '.hero-subtitle',
+                translateY: [120, 0],
+                rotateX: [20, 0],
+                opacity: [0, 1],
+                duration: 1400,
+                easing: 'spring(1, 70, 12, 0)'
+            }, '-=1200').add({
                 targets: '.hero-desc',
                 opacity: [0, 1],
-                duration: 1000
-            }, '-=800').add({
+                scale: [0.9, 1],
+                duration: 1200,
+                easing: 'easeOutElastic(1, .8)'
+            }, '-=1000').add({
                 targets: '#nav-floating',
                 opacity: [0, 1],
-                translateY: [-20, 0],
-                duration: 1000
-            }, '-=1000').add({
+                translateY: [-30, 0],
+                scale: [0.95, 1],
+                duration: 1200,
+                easing: 'spring(1, 80, 15, 0)'
+            }, '-=1200').add({
                 targets: '.hero-meta',
                 opacity: [0, 1],
-                translateX: [-20, 0],
-                duration: 1000
-            }, '-=1000');
+                translateX: [-40, 0],
+                duration: 1200,
+                easing: 'spring(1, 80, 15, 0)'
+            }, '-=1200');
         }
 
-        // Apply hover effects on images
-        document.querySelectorAll('img').forEach(img => {
-            img.classList.add('hover:scale-105', 'transition-transform', 'duration-700');
-        });
+        // Global hover effects on images REMOVED as per user request for simplicity
+        // document.querySelectorAll('img').forEach(img => { ... });
 
-        // --- Animations: Continuous Scroll Reveal (Unfolding Experience) ---
-        const revealElements = document.querySelectorAll('.reveal-up');
-        
-        function updateReveals() {
-            const viewportHeight = window.innerHeight;
-            
-            revealElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const elementTop = rect.top;
-                const elementBottom = rect.bottom;
-                
-                // Calculate progress: 0 when just entering bottom, 1 when fully in view
-                let progress = (viewportHeight - elementTop) / (viewportHeight * 0.5);
-                progress = Math.max(0, Math.min(1, progress));
-                
-                if (progress > 0) {
-                    const rotateX = 45 * (1 - progress);
-                    const translateY = 100 * (1 - progress);
-                    const scale = 0.8 + (0.2 * progress);
-                    const opacity = progress;
+        // --- Animations: Continuous Scroll Reveal (Kinetic Unfolding) ---
+        const revealOptions = {
+            threshold: Array.from({ length: 20 }, (_, i) => i / 20),
+            rootMargin: '0px 0px -10% 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progress = entry.intersectionRatio;
+                    const kineticProgress = 1 - Math.pow(1 - progress, 3);
                     
-                    el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) translateY(${translateY}px) scale(${scale})`;
-                    el.style.opacity = opacity;
+                    const rotateX = 35 * (1 - kineticProgress);
+                    const translateY = 60 * (1 - kineticProgress);
+                    const scale = 0.9 + (0.1 * kineticProgress);
+                    
+                    entry.target.style.transform = `perspective(2000px) rotateX(${rotateX}deg) translateY(${translateY}px) scale(${scale})`;
+                    entry.target.style.opacity = kineticProgress;
                 }
             });
-            requestAnimationFrame(updateReveals);
-        }
-        updateReveals();
+        }, revealOptions);
 
-        reveals.forEach(el => {
-            // If it's a grid, we want to animate children
-            if (el.classList.contains('bento-grid')) {
-                el.querySelectorAll('.reveal-up').forEach(child => observer.observe(child));
-            } else {
-                observer.observe(el);
-            }
+        document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+
+        // --- UI Spells: Kinetic Interaction Engine (LERP) ---
+        const grainOverlay = document.querySelector('.grain-overlay');
+        const heroTitle = document.querySelector('.hero-title');
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        const bentoImgs = document.querySelectorAll('.bento-grid img');
+        
+        let targetMouseX = 0, targetMouseY = 0;
+        let currentMouseX = 0, currentMouseY = 0;
+        let lastScrolled = window.pageYOffset;
+
+        window.addEventListener('mousemove', (e) => {
+            targetMouseX = (e.clientX - window.innerWidth / 2) / 50;
+            targetMouseY = (e.clientY - window.innerHeight / 2) / 50;
         });
 
-        // --- UI Spells: Kinetic Typography Scroll ---
-        window.addEventListener('scroll', () => {
+        function updateInteractions() {
             const scrolled = window.pageYOffset;
-            const heroTitle = document.querySelector('.hero-title');
-            const heroSubtitle = document.querySelector('.hero-subtitle');
+            
+            // 1. Smooth LERP for Mouse Parallax (Physics-based)
+            currentMouseX += (targetMouseX - currentMouseX) * 0.08;
+            currentMouseY += (targetMouseY - currentMouseY) * 0.08;
+
+            // 2. Kinetic Grain & Hero Parallax
+            if (grainOverlay) {
+                const velocity = Math.min(0.1, 0.04 + (Math.abs(scrolled - lastScrolled) / 500));
+                grainOverlay.style.opacity = velocity;
+                grainOverlay.style.transform = `translate(${currentMouseX * 0.5}px, ${currentMouseY * 0.5}px)`;
+            }
             
             if (heroTitle && heroSubtitle) {
-                heroTitle.style.transform = `translateY(${scrolled * 0.2}px)`;
-                heroSubtitle.style.transform = `translateY(${scrolled * 0.1}px)`;
+                const scrollY = scrolled * 0.2;
+                const scrollRotate = scrolled * 0.05;
+                heroTitle.style.transform = `translate(${currentMouseX * 2}px, ${currentMouseY * 2 + scrollY}px) rotateX(${-currentMouseY * 0.5 + scrollRotate}deg) rotateY(${currentMouseX * 0.5}deg)`;
+                heroSubtitle.style.transform = `translate(${currentMouseX * 2}px, ${currentMouseY * 2 + scrollY * 0.5}px) rotateX(${-currentMouseY * 0.5 + scrollRotate * 0.4}deg) rotateY(${currentMouseX * 0.5}deg)`;
                 heroSubtitle.style.filter = `blur(${scrolled * 0.02}px)`;
             }
-        });
 
-        // --- UI Spells: Horizontal Filmstrip Wheel Control ---
-        const film = document.getElementById('horizontal-film');
-        film.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                film.scrollLeft += e.deltaY;
+            // 3. Bento Interior Parallax
+            bentoImgs.forEach(img => {
+                const rect = img.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    img.style.transform = `scale(1.1) translate(${currentMouseX}px, ${currentMouseY}px)`;
+                }
+            });
+
+            lastScrolled = scrolled;
+            requestAnimationFrame(updateInteractions);
+        }
+        updateInteractions();
+
+        // --- Mobile Menu Logic ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                lenis.stop();
+                anime({
+                    targets: '.mobile-nav-link',
+                    translateY: [40, 0],
+                    opacity: [0, 1],
+                    delay: anime.stagger(100),
+                    easing: 'easeOutExpo',
+                    duration: 800
+                });
+            } else {
+                lenis.start();
             }
-        }, { passive: false });
+        }
 
+        menuToggle.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMenu();
+            });
+        });
     </script>
 </body>
-
 </html>

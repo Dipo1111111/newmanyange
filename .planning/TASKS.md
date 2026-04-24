@@ -1,16 +1,18 @@
 # Tasks: Newman Yange Portfolio
 
-## 🟢 Wave 1: Foundation & Audit
-- [x] Bootstrap project with Supreme Agent Protocol (V2.0)
-- [x] Initialize `.planning/STATE.md`
-- [ ] Audit `index.html` for technical debt and SEO consistency
-- [ ] Verify all image paths against existing assets
+## 🟢 Wave 1-3: Mobile & Foundation (Complete)
+- [x] Initial setup and mobile optimization
 
-## 🟡 Wave 2: Optimization
-- [ ] Convert high-res JPEGs to WebP where appropriate
-- [ ] Implement smooth scroll behavior for all navigation links
-- [ ] Add `aria-label` to all social icons for accessibility
+## 🔵 Wave 4: Kinetic Architecture & Content Hardening
+- [x] **Hero**: Optimize cinematic hero section for mobile viewports (tracking, positioning, padding)
+- [ ] **Bootstrap**: Initialize Vite project structure for better asset management and performance
+- [ ] **Organization**: Move images to `public/assets/` and update references
+- [ ] **Content**: Apply corrections from `newmant things.txt` (Bio, Titles, NYNTH details)
+- [ ] **Music**: Update "Jeffrey Benson" Spotify link and metadata
+- [ ] **Refinement**: Split CSS and JS into standalone modules for "Kinetic Scalability"
+- [ ] **Verification**: Audit design against Supreme Agent Protocol V3.0 (Concentric Radii, Typography)
 
-## 🔴 Wave 3: Expansion (Optional)
-- [ ] Add a "Latest News" or "Press" section
-- [ ] Implement a simple contact form (frontend-only or with a service like Formspree)
+## ⚪ Wave 5: Dynamic Gallery & Scaling
+- [ ] Implement a dynamic image loader for "NYNTH World" gallery
+- [ ] Add "Financial Trader" section details
+- [ ] Setup production build and SEO audit
